@@ -32,8 +32,8 @@ type User struct {
 	Email          string            `json:"email,omitempty" gorethink:"email,index"`
 	Password       string            `json:"password,omitempty" gorethink:"password"`
 	Gender         Gender            `json:"gender,omitempty" gorethink:"gender"`
-	Friends        []string          `json:"friends,omitempty" gorethink:"friends"` // 好友列表
-	Groups         []string          `json:"groups,omitempty" gorethink:"groups"`   // 所属群组ID
+	Friends        map[string]string `json:"friends,omitempty" gorethink:"friends"` // 好友列表 备注->UserID
+	Groups         map[string]string `json:"groups,omitempty" gorethink:"groups"`   // 所属群组ID 备注->GROUPID
 	ProfileImage   string            `json:"profile_image,omitempty" gorethink:"profile_image"`
 	Role           UserRole          `json:"role,omitempty" gorethink:"role"`
 	Address        string            `json:"address,omitempty" gorethink:"address"`
@@ -70,8 +70,8 @@ func RegisterUser(email, password string) error {
 		Name:           email[:strings.IndexRune(email, '@')+1], // 默认用户名
 		Email:          email,
 		Password:       password,
-		Friends:        []string{},
-		Groups:         []string{},
+		Friends:        nil,
+		Groups:         nil,
 		Address:        "",
 		Phone:          "",
 		Gender:         Other,       // 默认其他
@@ -131,8 +131,9 @@ func (u *User) GetFriends() (*User, error) {
 	return nil, nil
 }
 
-func (u *User) AddFriend(fid string) error {
-	u.Friends = append(u.Friends, fid)
+func (u *User) AddFriend(fname, fid string) error {
+	// u.Friends = append(u.Friends, fid)
+	u.Friends[fname] = fid
 	// 保存到数据库
 	return nil
 }
