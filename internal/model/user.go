@@ -55,7 +55,7 @@ type User struct {
 // }
 
 // Register 用户注册
-func RegisterUser(email, password string) error {
+func Register(email, password string) error {
 	// 如果数据库中有该对应关系 返回注册失败
 	id := uuid.New().String()
 	now := time.Now()
@@ -94,16 +94,11 @@ func RegisterUser(email, password string) error {
 }
 
 // Login 用户登录
-func LoginUser(email, password string) error {
+func Login(email, password string) error {
 	// TODO: 实现用户登录的逻辑
+	// 登录
 	// 查询数据库中 是否存在该对应关系
 	// 如果没有该对应关系 登录失败
-	return nil
-}
-
-// SendMessage 发送消息
-func (u *User) SendMessage(content string, recipientID string) error {
-	// TODO: 实现发送消息的逻辑
 	return nil
 }
 
