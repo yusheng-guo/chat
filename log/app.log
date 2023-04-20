@@ -1,2 +1,46 @@
 {"level":"info","msg":"Database and tables created!","time":"2023-04-20T17:35:26+08:00"}
 {"level":"info","msg":"Configuration file is loaded!","time":"2023-04-20T17:35:26+08:00"}
+{"level":"info","msg":"Database and tables created!","time":"2023-04-20T22:19:18+08:00"}
+{"level":"info","msg":"Configuration file is loaded!","time":"2023-04-20T22:19:18+08:00"}
+{"level":"info","msg":"[GIN-debug] POST   /register                 --\u003e github.com/yushengguo557/chat/api.Register (3 handlers)","time":"2023-04-20T22:19:18+08:00"}
+{"level":"info","msg":"[GIN-debug] POST   /login                    --\u003e github.com/yushengguo557/chat/api.Login (3 handlers)","time":"2023-04-20T22:19:18+08:00"}
+{"level":"info","msg":"[GIN-debug] POST   /admin                    --\u003e github.com/yushengguo557/chat/api.Admin (3 handlers)","time":"2023-04-20T22:19:18+08:00"}
+{"level":"info","msg":"[GIN-debug] POST   /logout                   --\u003e github.com/yushengguo557/chat/api.Logout (3 handlers)","time":"2023-04-20T22:19:18+08:00"}
+{"level":"info","msg":"[GIN-debug] PUT    /me/:id/                  --\u003e github.com/yushengguo557/chat/api.UpdateMyInfo (3 handlers)","time":"2023-04-20T22:19:18+08:00"}
+{"level":"info","msg":"[GIN-debug] GET    /me/:id/                  --\u003e github.com/yushengguo557/chat/api.GetMyInfo (3 handlers)","time":"2023-04-20T22:19:18+08:00"}
+{"level":"info","msg":"[GIN-debug] GET    /me/:id/friends           --\u003e github.com/yushengguo557/chat/api.GetMyFriends (3 handlers)","time":"2023-04-20T22:19:18+08:00"}
+{"level":"info","msg":"[GIN-debug] POST   /friend/:id               --\u003e github.com/yushengguo557/chat/api.AddFriend (3 handlers)","time":"2023-04-20T22:19:18+08:00"}
+{"level":"info","msg":"[GIN-debug] DELETE /friend/:id               --\u003e github.com/yushengguo557/chat/api.DeleteFriend (3 handlers)","time":"2023-04-20T22:19:18+08:00"}
+{"level":"info","msg":"[GIN-debug] PUT    /friend/:id               --\u003e github.com/yushengguo557/chat/api.UpdateFriendInfo (3 handlers)","time":"2023-04-20T22:19:18+08:00"}
+{"level":"info","msg":"[GIN-debug] GET    /friend/:id               --\u003e github.com/yushengguo557/chat/api.GetFriendInfo (3 handlers)","time":"2023-04-20T22:19:18+08:00"}
+{"level":"info","msg":"[GIN-debug] POST   /message                  --\u003e github.com/yushengguo557/chat/api.SendMessage (3 handlers)","time":"2023-04-20T22:19:18+08:00"}
+{"level":"info","msg":"[GIN-debug] DELETE /message/:id              --\u003e github.com/yushengguo557/chat/api.DeleteMessage (3 handlers)","time":"2023-04-20T22:19:18+08:00"}
+{"level":"info","msg":"[GIN-debug] PUT    /message/:id              --\u003e github.com/yushengguo557/chat/api.UpdateMessage (3 handlers)","time":"2023-04-20T22:19:18+08:00"}
+{"level":"info","msg":"[GIN-debug] GET    /message                  --\u003e github.com/yushengguo557/chat/api.ReceiveMessage (3 handlers)","time":"2023-04-20T22:19:18+08:00"}
+{"level":"info","msg":"Database and tables created!","time":"2023-04-20T22:22:04+08:00"}
+{"level":"info","msg":"Configuration file is loaded!","time":"2023-04-20T22:22:04+08:00"}
+{"level":"info","msg":"Database and tables created!","time":"2023-04-20T22:22:59+08:00"}
+{"level":"info","msg":"Configuration file is loaded!","time":"2023-04-20T22:22:59+08:00"}
+{"level":"info","msg":"Database and tables created!","time":"2023-04-20T22:25:50+08:00"}
+{"level":"info","msg":"Configuration file is loaded!","time":"2023-04-20T22:25:50+08:00"}
+{"level":"info","msg":"Database and tables created!","time":"2023-04-20T22:26:14+08:00"}
+{"level":"info","msg":"Configuration file is loaded!","time":"2023-04-20T22:26:14+08:00"}
+{"level":"info","msg":"Database and tables created!","time":"2023-04-20T22:26:38+08:00"}
+{"level":"info","msg":"Configuration file is loaded!","time":"2023-04-20T22:26:38+08:00"}
+{"level":"info","msg":"Database and tables created!","time":"2023-04-20T22:28:06+08:00"}
+{"level":"info","msg":"Configuration file is loaded!","time":"2023-04-20T22:28:06+08:00"}
+{"level":"info","msg":"Database and tables created!","time":"2023-04-20T22:36:46+08:00"}
+{"level":"info","msg":"Configuration file is loaded!","time":"2023-04-20T22:36:46+08:00"}
+{"level":"info","msg":"Database and tables created!","time":"2023-04-20T22:37:59+08:00"}
+{"level":"info","msg":"Configuration file is loaded!","time":"2023-04-20T22:37:59+08:00"}
+{"level":"info","msg":"Database and tables created!","time":"2023-04-20T22:38:17+08:00"}
+{"level":"info","msg":"Configuration file is loaded!","time":"2023-04-20T22:38:17+08:00"}
+{"level":"info","msg":"Database and tables created!","time":"2023-04-20T22:42:58+08:00"}
+{"level":"info","msg":"Configuration file is loaded!","time":"2023-04-20T22:42:58+08:00"}
+{"level":"info","msg":"Database and tables created!","time":"2023-04-20T22:43:07+08:00"}
+{"level":"info","msg":"Configuration file is loaded!","time":"2023-04-20T22:43:07+08:00"}
+{"level":"info","msg":"Database and tables created!","time":"2023-04-20T22:43:52+08:00"}
+{"level":"info","msg":"Configuration file is loaded!","time":"2023-04-20T22:43:52+08:00"}
+{"level":"info","msg":"Database and tables created!","time":"2023-04-20T22:45:49+08:00"}
+{"level":"info","msg":"Configuration file is loaded!","time":"2023-04-20T22:45:49+08:00"}
+{"level":"warning","msg":"listen tcp :8080: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted.","time":"2023-04-20T22:45:49+08:00"}

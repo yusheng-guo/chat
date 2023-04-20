@@ -3,6 +3,7 @@ package main
 import (
 	"net/http"
 
+	"github.com/gin-gonic/gin"
 	"github.com/yushengguo557/chat/global"
 	"github.com/yushengguo557/chat/internal/routers"
 )
@@ -28,7 +29,10 @@ func init() {
 }
 
 func main() {
+	var err error
 	router := routers.NewRouter()
+	// gin.DefaultWriter = colorable.NewColorableStdout() // windows 平台支持着色
+	gin.DefaultWriter = global.Logger.Writer()
 	server := &http.Server{
 		Addr:           ":" + global.ServerConfig.Port,
 		Handler:        router,
@@ -36,6 +40,9 @@ func main() {
 		WriteTimeout:   global.ServerConfig.WriteTimeOut,
 		MaxHeaderBytes: 1 << 20,
 	}
-	server.ListenAndServe()
+	err = server.ListenAndServe()
+	if err != nil {
+		global.Logger.Warn(err)
+	}
 	defer global.Session.Close() // 关闭数据库会话
 }
