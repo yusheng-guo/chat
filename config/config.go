@@ -16,24 +16,24 @@ func NewConfig() (cfg *Config, err error) {
 	cfg = &Config{Viper: viper.New()} // 实例化
 
 	// TODO: 设置默认值
-	// cfg.SetDefault("Server", &ServerConfigS{
-	// 	RunMode:      "debug",
-	// 	Port:         8080,
-	// 	ReadTimeOut:  5,
-	// 	WriteTimeOut: 5,
-	// })
+	cfg.SetDefault("Server", &ServerConfigS{
+		RunMode:      "debug",
+		Port:         "8080",
+		ReadTimeOut:  5,
+		WriteTimeOut: 5,
+	})
 
-	// cfg.SetDefault("Database", &DBConfigS{
-	// 	DBtype:   "rethinkdb",
-	// 	Username: "",
-	// 	Password: "",
-	// 	Host:     "119.91.204.226:32769",
-	// 	DBName:   "chat",
-	// 	Timeout:  5,
-	// })
+	cfg.SetDefault("Database", &DBConfigS{
+		DBtype:   "rethinkdb",
+		Username: "",
+		Password: "",
+		Host:     "119.91.204.226:32769",
+		DBName:   "chat",
+		Timeout:  5,
+	})
 	// 设置默认配置信息
 	// cfg.SetDefault("Server.RunMode", "debug")
-	// cfg.SetDefault("Server.port", 8080)
+	// cfg.SetDefault("Server.port", "8080")
 	// cfg.SetDefault("Server.ReadTimeOut", 60)
 	// cfg.SetDefault("Server.WriteTimeOut", 60)
 	// cfg.SetDefault("Database.DBtype", "rethinkdb")
@@ -59,7 +59,7 @@ func NewConfig() (cfg *Config, err error) {
 	return cfg, nil
 }
 
-// ReadSection
+// ReadSection 将k部分内容读入结构体中 v必须是结构体指针
 func (cfg *Config) ReadSection(k string, v any) (err error) {
 	err = cfg.UnmarshalKey(k, v) // 接收一个单件并转换为结构体
 	if err != nil {

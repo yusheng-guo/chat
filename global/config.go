@@ -2,8 +2,6 @@
 package global
 
 import (
-	"log"
-
 	"github.com/yushengguo557/chat/config"
 )
 
@@ -12,19 +10,20 @@ var (
 	ServerConfig *config.ServerConfigS // 服务器配置
 )
 
-func init() {
+func InitConfig() (err error) {
 	// TODO: 建立配置 对全局变量进行赋值
-	cfg, err := config.NewConfig()
+	var cfg *config.Config
+	cfg, err = config.NewConfig()
 	if err != nil {
-		log.Fatal(err)
+		return err
 	}
 	err = cfg.ReadSection("Server", &ServerConfig)
 	if err != nil {
-		log.Fatal(err)
+		return err
 	}
 	err = cfg.ReadSection("Database", &DBConfig)
 	if err != nil {
-		log.Fatal(err)
+		return err
 	}
-	log.Println("Configuration file is loaded!")
+	return
 }
