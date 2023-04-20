@@ -1,0 +1,14 @@
+# 说明：数据库配置信息 数据库地址 端口 用户名 密码 
+Server:
+  RunMode: debug # debug release test
+  Port: 8080
+  ReadTimeOut: 60
+  WriteTimeOut: 60
+
+Database:
+  DBtype: rethinkdb
+  Username: root # 用户名
+  Password: 123 # 密码
+  Host: 119.91.204.226:32769
+  DBName: chat
+  Timeout: 5
