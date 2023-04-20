@@ -17,13 +17,11 @@ func InitDB() (err error) {
 	if err != nil {
 		return err
 	}
-
 	// 创建 chat 数据库
 	_, err = r.DBCreate("chat").RunWrite(Session)
 	if err != nil {
 		return err
 	}
-
 	// 创建 users 表
 	_, err = r.DB("chat").TableCreate("users").RunWrite(Session)
 	if err != nil {

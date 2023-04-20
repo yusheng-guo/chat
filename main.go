@@ -1,7 +1,6 @@
 package main
 
 import (
-	"log"
 	"net/http"
 
 	"github.com/yushengguo557/chat/global"
@@ -9,19 +8,23 @@ import (
 )
 
 func init() {
+	// 实例化 Logger
+	global.InitLog()
 	var err error
+
 	// 初始化数据库 (忽略错误)
 	_ = global.InitDB()
-	// if err != nil {
-	// 	log.Fatal(err)
-	// }
-	log.Println("Database and tables created!")
+	if err != nil {
+		global.Logger.Info(err)
+	}
+	global.Logger.Println("Database and tables created!")
+
 	// 初始化配置
 	err = global.InitConfig()
 	if err != nil {
-		log.Fatal(err)
+		global.Logger.Warn(err)
 	}
-	log.Println("Configuration file is loaded!")
+	global.Logger.Info("Configuration file is loaded!")
 }
 
 func main() {
