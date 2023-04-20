@@ -1,9 +1,10 @@
 package main
 
 import (
+	"log"
 	"net/http"
+	"os"
 
-	"github.com/gin-gonic/gin"
 	"github.com/yushengguo557/chat/global"
 	"github.com/yushengguo557/chat/internal/routers"
 )
@@ -16,9 +17,9 @@ func init() {
 	// 初始化数据库 (忽略错误)
 	_ = global.InitDB()
 	if err != nil {
-		global.Logger.Info(err)
+		global.Logger.Warn(err)
 	}
-	global.Logger.Println("Database and tables created!")
+	global.Logger.Info("Database and tables created!")
 
 	// 初始化配置
 	err = global.InitConfig()
@@ -32,7 +33,6 @@ func main() {
 	var err error
 	router := routers.NewRouter()
 	// gin.DefaultWriter = colorable.NewColorableStdout() // windows 平台支持着色
-	gin.DefaultWriter = global.Logger.Writer()
 	server := &http.Server{
 		Addr:           ":" + global.ServerConfig.Port,
 		Handler:        router,
@@ -40,9 +40,10 @@ func main() {
 		WriteTimeout:   global.ServerConfig.WriteTimeOut,
 		MaxHeaderBytes: 1 << 20,
 	}
-	err = server.ListenAndServe()
-	if err != nil {
+	log.Printf("listen at: %s\n", global.ServerConfig.Port)
+	if err = server.ListenAndServe(); err != nil {
+		global.Session.Close() // 关闭数据库会话
 		global.Logger.Warn(err)
+		os.Exit(1)
 	}
-	defer global.Session.Close() // 关闭数据库会话
 }
