@@ -29,6 +29,9 @@ func init() {
 	global.Logger.Info("Configuration file is loaded!")
 }
 
+// @title Chat System
+// @version 1.0.0
+// @description Chat system developed using Gin and github.com/gobwas/ws!
 func main() {
 	var err error
 	router := routers.NewRouter()

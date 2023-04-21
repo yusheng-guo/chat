@@ -1,19 +1,172 @@
-{"level":"info","msg":"Database and tables created!","time":"2023-04-20T23:44:07+08:00"}
-{"level":"info","msg":"Configuration file is loaded!","time":"2023-04-20T23:44:07+08:00"}
-{"level":"info","msg":"Database and tables created!","time":"2023-04-20T23:44:36+08:00"}
-{"level":"info","msg":"Configuration file is loaded!","time":"2023-04-20T23:44:36+08:00"}
-{"level":"info","msg":"[GIN-debug] POST   /v1/register              --\u003e github.com/yushengguo557/chat/api/v1.Register (3 handlers)","time":"2023-04-20T23:44:36+08:00"}
-{"level":"info","msg":"[GIN-debug] POST   /v1/login                 --\u003e github.com/yushengguo557/chat/api/v1.Login (3 handlers)","time":"2023-04-20T23:44:36+08:00"}
-{"level":"info","msg":"[GIN-debug] POST   /v1/admin                 --\u003e github.com/yushengguo557/chat/api/v1.Admin (3 handlers)","time":"2023-04-20T23:44:36+08:00"}
-{"level":"info","msg":"[GIN-debug] POST   /v1/logout                --\u003e github.com/yushengguo557/chat/api/v1.Logout (3 handlers)","time":"2023-04-20T23:44:36+08:00"}
-{"level":"info","msg":"[GIN-debug] PUT    /v1/me/:id/               --\u003e github.com/yushengguo557/chat/api/v1.UpdateMyInfo (3 handlers)","time":"2023-04-20T23:44:36+08:00"}
-{"level":"info","msg":"[GIN-debug] GET    /v1/me/:id/               --\u003e github.com/yushengguo557/chat/api/v1.GetMyInfo (3 handlers)","time":"2023-04-20T23:44:36+08:00"}
-{"level":"info","msg":"[GIN-debug] GET    /v1/me/:id/friends        --\u003e github.com/yushengguo557/chat/api/v1.GetMyFriends (3 handlers)","time":"2023-04-20T23:44:36+08:00"}
-{"level":"info","msg":"[GIN-debug] POST   /v1/friend/:id            --\u003e github.com/yushengguo557/chat/api/v1.AddFriend (3 handlers)","time":"2023-04-20T23:44:36+08:00"}
-{"level":"info","msg":"[GIN-debug] DELETE /v1/friend/:id            --\u003e github.com/yushengguo557/chat/api/v1.DeleteFriend (3 handlers)","time":"2023-04-20T23:44:36+08:00"}
-{"level":"info","msg":"[GIN-debug] PUT    /v1/friend/:id            --\u003e github.com/yushengguo557/chat/api/v1.UpdateFriendInfo (3 handlers)","time":"2023-04-20T23:44:36+08:00"}
-{"level":"info","msg":"[GIN-debug] GET    /v1/friend/:id            --\u003e github.com/yushengguo557/chat/api/v1.GetFriendInfo (3 handlers)","time":"2023-04-20T23:44:36+08:00"}
-{"level":"info","msg":"[GIN-debug] POST   /v1/message               --\u003e github.com/yushengguo557/chat/api/v1.SendMessage (3 handlers)","time":"2023-04-20T23:44:36+08:00"}
-{"level":"info","msg":"[GIN-debug] DELETE /v1/message/:id           --\u003e github.com/yushengguo557/chat/api/v1.DeleteMessage (3 handlers)","time":"2023-04-20T23:44:36+08:00"}
-{"level":"info","msg":"[GIN-debug] PUT    /v1/message/:id           --\u003e github.com/yushengguo557/chat/api/v1.UpdateMessage (3 handlers)","time":"2023-04-20T23:44:36+08:00"}
-{"level":"info","msg":"[GIN-debug] GET    /v1/message               --\u003e github.com/yushengguo557/chat/api/v1.ReceiveMessage (3 handlers)","time":"2023-04-20T23:44:36+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:15:52 | 200 |       5.126ms |             ::1 | GET      \"/docs/swagger-ui.css\"","time":"2023-04-21T13:15:52+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:15:52 | 200 |       5.126ms |             ::1 | GET      \"/docs/swagger-ui-standalone-preset.js\"","time":"2023-04-21T13:15:52+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:15:52 | 200 |     16.3765ms |             ::1 | GET      \"/docs/swagger-ui-bundle.js\"","time":"2023-04-21T13:15:52+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:15:52 | 200 |       3.844ms |             ::1 | GET      \"/docs/doc.json\"","time":"2023-04-21T13:15:52+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:15:52 | 200 |         264µs |             ::1 | GET      \"/docs/favicon-32x32.png\"","time":"2023-04-21T13:15:52+08:00"}
+{"level":"info","msg":"Database and tables created!","time":"2023-04-21T13:18:25+08:00"}
+{"level":"info","msg":"Configuration file is loaded!","time":"2023-04-21T13:18:25+08:00"}
+{"level":"info","msg":"Database and tables created!","time":"2023-04-21T13:18:25+08:00"}
+{"level":"info","msg":"Configuration file is loaded!","time":"2023-04-21T13:18:25+08:00"}
+{"level":"warning","msg":"listen tcp :8080: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted.","time":"2023-04-21T13:18:25+08:00"}
+{"level":"info","msg":"Database and tables created!","time":"2023-04-21T13:18:44+08:00"}
+{"level":"info","msg":"Configuration file is loaded!","time":"2023-04-21T13:18:44+08:00"}
+{"level":"info","msg":"Database and tables created!","time":"2023-04-21T13:18:44+08:00"}
+{"level":"info","msg":"Configuration file is loaded!","time":"2023-04-21T13:18:44+08:00"}
+{"level":"warning","msg":"listen tcp :8080: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted.","time":"2023-04-21T13:18:44+08:00"}
+{"level":"info","msg":"Database and tables created!","time":"2023-04-21T13:19:21+08:00"}
+{"level":"info","msg":"Configuration file is loaded!","time":"2023-04-21T13:19:21+08:00"}
+{"level":"info","msg":"Database and tables created!","time":"2023-04-21T13:19:21+08:00"}
+{"level":"info","msg":"Configuration file is loaded!","time":"2023-04-21T13:19:21+08:00"}
+{"level":"warning","msg":"listen tcp :8080: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted.","time":"2023-04-21T13:19:21+08:00"}
+{"level":"info","msg":"Database and tables created!","time":"2023-04-21T13:20:38+08:00"}
+{"level":"info","msg":"Configuration file is loaded!","time":"2023-04-21T13:20:38+08:00"}
+{"level":"info","msg":"Database and tables created!","time":"2023-04-21T13:20:38+08:00"}
+{"level":"info","msg":"Configuration file is loaded!","time":"2023-04-21T13:20:38+08:00"}
+{"level":"warning","msg":"listen tcp :8080: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted.","time":"2023-04-21T13:20:38+08:00"}
+{"level":"info","msg":"Database and tables created!","time":"2023-04-21T13:24:49+08:00"}
+{"level":"info","msg":"Configuration file is loaded!","time":"2023-04-21T13:24:49+08:00"}
+{"level":"info","msg":"Database and tables created!","time":"2023-04-21T13:24:49+08:00"}
+{"level":"info","msg":"Configuration file is loaded!","time":"2023-04-21T13:24:49+08:00"}
+{"level":"warning","msg":"listen tcp :8080: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted.","time":"2023-04-21T13:24:49+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:24:49 | 200 |       563.7µs |       127.0.0.1 | GET      \"/docs/index.html\"","time":"2023-04-21T13:24:49+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:24:49 | 200 |      1.8123ms |       127.0.0.1 | GET      \"/docs/swagger-ui.css\"","time":"2023-04-21T13:24:49+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:24:49 | 200 |      1.7972ms |             ::1 | GET      \"/docs/swagger-ui-standalone-preset.js\"","time":"2023-04-21T13:24:49+08:00"}
+{"level":"info","msg":"Database and tables created!","time":"2023-04-21T13:24:49+08:00"}
+{"level":"info","msg":"Configuration file is loaded!","time":"2023-04-21T13:24:49+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:24:49 | 200 |     36.4254ms |             ::1 | GET      \"/docs/swagger-ui-bundle.js\"","time":"2023-04-21T13:24:49+08:00"}
+{"level":"warning","msg":"listen tcp :8080: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted.","time":"2023-04-21T13:24:49+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:24:50 | 200 |       635.9µs |             ::1 | GET      \"/docs/doc.json\"","time":"2023-04-21T13:24:50+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:24:50 | 200 |       794.6µs |             ::1 | GET      \"/docs/favicon-32x32.png\"","time":"2023-04-21T13:24:50+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:24:52 | 200 |      1.2808ms |             ::1 | GET      \"/docs/index.html\"","time":"2023-04-21T13:24:52+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:24:52 | 304 |            0s |             ::1 | GET      \"/docs/swagger-ui.css\"","time":"2023-04-21T13:24:52+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:24:52 | 304 |       1.439ms |             ::1 | GET      \"/docs/swagger-ui-bundle.js\"","time":"2023-04-21T13:24:52+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:24:52 | 304 |       391.5µs |             ::1 | GET      \"/docs/swagger-ui-standalone-preset.js\"","time":"2023-04-21T13:24:52+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:24:52 | 200 |       142.9µs |             ::1 | GET      \"/docs/doc.json\"","time":"2023-04-21T13:24:52+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:24:52 | 304 |            0s |             ::1 | GET      \"/docs/favicon-32x32.png\"","time":"2023-04-21T13:24:52+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:24:54 | 304 |            0s |             ::1 | GET      \"/docs/favicon-32x32.png\"","time":"2023-04-21T13:24:54+08:00"}
+{"level":"info","msg":"Database and tables created!","time":"2023-04-21T13:25:54+08:00"}
+{"level":"info","msg":"Configuration file is loaded!","time":"2023-04-21T13:25:54+08:00"}
+{"level":"info","msg":"Database and tables created!","time":"2023-04-21T13:25:54+08:00"}
+{"level":"info","msg":"Configuration file is loaded!","time":"2023-04-21T13:25:54+08:00"}
+{"level":"warning","msg":"listen tcp :8080: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted.","time":"2023-04-21T13:25:54+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:26:04 | 200 |         540µs |             ::1 | GET      \"/docs/index.html\"","time":"2023-04-21T13:26:04+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:26:04 | 200 |      1.5495ms |             ::1 | GET      \"/docs/swagger-ui.css\"","time":"2023-04-21T13:26:04+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:26:04 | 200 |      1.4474ms |             ::1 | GET      \"/docs/swagger-ui-standalone-preset.js\"","time":"2023-04-21T13:26:04+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:26:04 | 200 |      3.8022ms |             ::1 | GET      \"/docs/swagger-ui-bundle.js\"","time":"2023-04-21T13:26:04+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:26:04 | 200 |       432.3µs |             ::1 | GET      \"/docs/doc.json\"","time":"2023-04-21T13:26:04+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:26:04 | 200 |      2.0217ms |             ::1 | GET      \"/docs/favicon-32x32.png\"","time":"2023-04-21T13:26:04+08:00"}
+{"level":"info","msg":"Database and tables created!","time":"2023-04-21T13:26:29+08:00"}
+{"level":"info","msg":"Configuration file is loaded!","time":"2023-04-21T13:26:29+08:00"}
+{"level":"info","msg":"Database and tables created!","time":"2023-04-21T13:26:29+08:00"}
+{"level":"info","msg":"Configuration file is loaded!","time":"2023-04-21T13:26:29+08:00"}
+{"level":"warning","msg":"listen tcp :8080: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted.","time":"2023-04-21T13:26:29+08:00"}
+{"level":"info","msg":"Database and tables created!","time":"2023-04-21T13:27:29+08:00"}
+{"level":"info","msg":"Configuration file is loaded!","time":"2023-04-21T13:27:29+08:00"}
+{"level":"info","msg":"Database and tables created!","time":"2023-04-21T13:27:29+08:00"}
+{"level":"info","msg":"Configuration file is loaded!","time":"2023-04-21T13:27:29+08:00"}
+{"level":"warning","msg":"listen tcp :8080: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted.","time":"2023-04-21T13:27:29+08:00"}
+{"level":"info","msg":"Database and tables created!","time":"2023-04-21T13:34:18+08:00"}
+{"level":"info","msg":"Configuration file is loaded!","time":"2023-04-21T13:34:18+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:34:27 | 200 |       533.9µs |             ::1 | GET      \"/docs/index.html\"","time":"2023-04-21T13:34:27+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:34:27 | 200 |      1.0669ms |             ::1 | GET      \"/docs/swagger-ui.css\"","time":"2023-04-21T13:34:27+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:34:27 | 200 |      1.0696ms |             ::1 | GET      \"/docs/swagger-ui-standalone-preset.js\"","time":"2023-04-21T13:34:27+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:34:27 | 200 |     10.8617ms |             ::1 | GET      \"/docs/swagger-ui-bundle.js\"","time":"2023-04-21T13:34:27+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:34:27 | 200 |     10.1055ms |             ::1 | GET      \"/docs/doc.json\"","time":"2023-04-21T13:34:27+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:34:27 | 200 |            0s |             ::1 | GET      \"/docs/favicon-32x32.png\"","time":"2023-04-21T13:34:27+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:34:37 | 304 |            0s |             ::1 | GET      \"/docs/favicon-32x32.png\"","time":"2023-04-21T13:34:37+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:34:42 | 304 |       343.1µs |             ::1 | GET      \"/docs/favicon-32x32.png\"","time":"2023-04-21T13:34:42+08:00"}
+{"level":"info","msg":"Database and tables created!","time":"2023-04-21T13:35:49+08:00"}
+{"level":"info","msg":"Configuration file is loaded!","time":"2023-04-21T13:35:49+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:35:49 | 200 |       532.8µs |             ::1 | GET      \"/docs/index.html\"","time":"2023-04-21T13:35:49+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:35:50 | 200 |      5.0009ms |             ::1 | GET      \"/docs/swagger-ui.css\"","time":"2023-04-21T13:35:50+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:35:50 | 200 |      1.0072ms |             ::1 | GET      \"/docs/swagger-ui-standalone-preset.js\"","time":"2023-04-21T13:35:50+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:35:50 | 200 |      6.2793ms |             ::1 | GET      \"/docs/swagger-ui-bundle.js\"","time":"2023-04-21T13:35:50+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:35:50 | 200 |       188.9µs |             ::1 | GET      \"/docs/doc.json\"","time":"2023-04-21T13:35:50+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:35:50 | 200 |            0s |             ::1 | GET      \"/docs/favicon-32x32.png\"","time":"2023-04-21T13:35:50+08:00"}
+{"level":"info","msg":"Database and tables created!","time":"2023-04-21T13:36:04+08:00"}
+{"level":"info","msg":"Configuration file is loaded!","time":"2023-04-21T13:36:04+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:36:07 | 200 |       536.1µs |             ::1 | GET      \"/docs/index.html\"","time":"2023-04-21T13:36:07+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:36:07 | 200 |      1.6202ms |             ::1 | GET      \"/docs/swagger-ui.css\"","time":"2023-04-21T13:36:07+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:36:07 | 200 |      1.1828ms |             ::1 | GET      \"/docs/swagger-ui-standalone-preset.js\"","time":"2023-04-21T13:36:07+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:36:07 | 200 |      2.2234ms |             ::1 | GET      \"/docs/swagger-ui-bundle.js\"","time":"2023-04-21T13:36:07+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:36:07 | 200 |     12.8468ms |             ::1 | GET      \"/docs/doc.json\"","time":"2023-04-21T13:36:07+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:36:07 | 200 |      8.8528ms |             ::1 | GET      \"/docs/favicon-32x32.png\"","time":"2023-04-21T13:36:07+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:36:09 | 304 |            0s |             ::1 | GET      \"/docs/favicon-32x32.png\"","time":"2023-04-21T13:36:09+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:36:10 | 304 |     10.0264ms |             ::1 | GET      \"/docs/favicon-32x32.png\"","time":"2023-04-21T13:36:10+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:36:12 | 304 |      3.2076ms |             ::1 | GET      \"/docs/favicon-32x32.png\"","time":"2023-04-21T13:36:12+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:36:13 | 304 |            0s |             ::1 | GET      \"/docs/favicon-32x32.png\"","time":"2023-04-21T13:36:13+08:00"}
+{"level":"info","msg":"Database and tables created!","time":"2023-04-21T13:36:48+08:00"}
+{"level":"info","msg":"Configuration file is loaded!","time":"2023-04-21T13:36:48+08:00"}
+{"level":"info","msg":"Database and tables created!","time":"2023-04-21T13:36:55+08:00"}
+{"level":"info","msg":"Configuration file is loaded!","time":"2023-04-21T13:36:55+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:37:01 | 200 |       544.4µs |             ::1 | GET      \"/docs/index.html\"","time":"2023-04-21T13:37:01+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:37:01 | 200 |      1.0352ms |             ::1 | GET      \"/docs/swagger-ui.css\"","time":"2023-04-21T13:37:01+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:37:01 | 200 |      1.0601ms |             ::1 | GET      \"/docs/swagger-ui-standalone-preset.js\"","time":"2023-04-21T13:37:01+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:37:01 | 200 |      2.1365ms |             ::1 | GET      \"/docs/swagger-ui-bundle.js\"","time":"2023-04-21T13:37:01+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:37:01 | 200 |       923.3µs |             ::1 | GET      \"/docs/doc.json\"","time":"2023-04-21T13:37:01+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:37:01 | 200 |      3.7002ms |             ::1 | GET      \"/docs/favicon-32x32.png\"","time":"2023-04-21T13:37:01+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:37:06 | 200 |       255.3µs |             ::1 | GET      \"/docs/index.html\"","time":"2023-04-21T13:37:06+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:37:06 | 304 |            0s |             ::1 | GET      \"/docs/swagger-ui.css\"","time":"2023-04-21T13:37:06+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:37:06 | 304 |            0s |             ::1 | GET      \"/docs/swagger-ui-bundle.js\"","time":"2023-04-21T13:37:06+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:37:06 | 304 |            0s |             ::1 | GET      \"/docs/swagger-ui-standalone-preset.js\"","time":"2023-04-21T13:37:06+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:37:06 | 200 |       737.3µs |             ::1 | GET      \"/docs/doc.json\"","time":"2023-04-21T13:37:06+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:37:06 | 304 |       1.122ms |             ::1 | GET      \"/docs/favicon-32x32.png\"","time":"2023-04-21T13:37:06+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:37:10 | 304 |            0s |             ::1 | GET      \"/docs/favicon-32x32.png\"","time":"2023-04-21T13:37:10+08:00"}
+{"level":"info","msg":"Database and tables created!","time":"2023-04-21T13:37:26+08:00"}
+{"level":"info","msg":"Configuration file is loaded!","time":"2023-04-21T13:37:26+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:37:26 | 200 |       539.4µs |             ::1 | GET      \"/docs/index.html\"","time":"2023-04-21T13:37:26+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:37:26 | 200 |      2.2483ms |             ::1 | GET      \"/docs/swagger-ui.css\"","time":"2023-04-21T13:37:26+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:37:26 | 200 |      1.0872ms |             ::1 | GET      \"/docs/swagger-ui-standalone-preset.js\"","time":"2023-04-21T13:37:26+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:37:26 | 200 |     11.2642ms |       127.0.0.1 | GET      \"/docs/swagger-ui-bundle.js\"","time":"2023-04-21T13:37:26+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:37:26 | 200 |       137.2µs |       127.0.0.1 | GET      \"/docs/doc.json\"","time":"2023-04-21T13:37:26+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:37:27 | 200 |       977.1µs |       127.0.0.1 | GET      \"/docs/favicon-32x32.png\"","time":"2023-04-21T13:37:27+08:00"}
+{"level":"info","msg":"Database and tables created!","time":"2023-04-21T13:37:37+08:00"}
+{"level":"info","msg":"Configuration file is loaded!","time":"2023-04-21T13:37:37+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:37:40 | 200 |       525.1µs |             ::1 | GET      \"/docs/index.html\"","time":"2023-04-21T13:37:40+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:37:40 | 200 |       508.3µs |             ::1 | GET      \"/docs/swagger-ui.css\"","time":"2023-04-21T13:37:40+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:37:40 | 200 |      1.0575ms |             ::1 | GET      \"/docs/swagger-ui-standalone-preset.js\"","time":"2023-04-21T13:37:40+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:37:40 | 200 |      2.1291ms |             ::1 | GET      \"/docs/swagger-ui-bundle.js\"","time":"2023-04-21T13:37:40+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:37:40 | 200 |       812.4µs |             ::1 | GET      \"/docs/doc.json\"","time":"2023-04-21T13:37:40+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:37:40 | 200 |            0s |             ::1 | GET      \"/docs/favicon-32x32.png\"","time":"2023-04-21T13:37:40+08:00"}
+{"level":"info","msg":"Database and tables created!","time":"2023-04-21T13:38:01+08:00"}
+{"level":"info","msg":"Configuration file is loaded!","time":"2023-04-21T13:38:01+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:38:05 | 200 |       543.1µs |             ::1 | GET      \"/docs/index.html\"","time":"2023-04-21T13:38:05+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:38:05 | 200 |      6.5725ms |             ::1 | GET      \"/docs/swagger-ui.css\"","time":"2023-04-21T13:38:05+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:38:05 | 200 |       512.4µs |             ::1 | GET      \"/docs/swagger-ui-standalone-preset.js\"","time":"2023-04-21T13:38:05+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:38:05 | 200 |       1.988ms |             ::1 | GET      \"/docs/swagger-ui-bundle.js\"","time":"2023-04-21T13:38:05+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:38:06 | 200 |      2.6208ms |             ::1 | GET      \"/docs/doc.json\"","time":"2023-04-21T13:38:06+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:38:06 | 200 |      9.9125ms |             ::1 | GET      \"/docs/favicon-32x32.png\"","time":"2023-04-21T13:38:06+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:38:08 | 304 |            0s |             ::1 | GET      \"/docs/favicon-32x32.png\"","time":"2023-04-21T13:38:08+08:00"}
+{"level":"info","msg":"Database and tables created!","time":"2023-04-21T13:38:46+08:00"}
+{"level":"info","msg":"Configuration file is loaded!","time":"2023-04-21T13:38:46+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:38:46 | 200 |       523.5µs |             ::1 | GET      \"/docs/index.html\"","time":"2023-04-21T13:38:46+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:38:46 | 200 |       294.5µs |             ::1 | GET      \"/docs/swagger-ui.css\"","time":"2023-04-21T13:38:46+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:38:46 | 200 |      1.0851ms |             ::1 | GET      \"/docs/swagger-ui-standalone-preset.js\"","time":"2023-04-21T13:38:46+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:38:46 | 200 |      2.8439ms |             ::1 | GET      \"/docs/swagger-ui-bundle.js\"","time":"2023-04-21T13:38:46+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:38:46 | 200 |       887.7µs |             ::1 | GET      \"/docs/doc.json\"","time":"2023-04-21T13:38:46+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:38:46 | 200 |       911.3µs |             ::1 | GET      \"/docs/favicon-32x32.png\"","time":"2023-04-21T13:38:46+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:39:30 | 304 |       558.4µs |             ::1 | GET      \"/docs/favicon-32x32.png\"","time":"2023-04-21T13:39:30+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:39:35 | 304 |            0s |             ::1 | GET      \"/docs/favicon-32x32.png\"","time":"2023-04-21T13:39:35+08:00"}
+{"level":"info","msg":"Database and tables created!","time":"2023-04-21T13:39:56+08:00"}
+{"level":"info","msg":"Configuration file is loaded!","time":"2023-04-21T13:39:56+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:39:56 | 200 |            0s |             ::1 | GET      \"/docs/favicon-32x32.png\"","time":"2023-04-21T13:39:56+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:39:57 | 304 |     12.2646ms |             ::1 | GET      \"/docs/favicon-32x32.png\"","time":"2023-04-21T13:39:57+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 13:39:59 | 304 |      1.0102ms |             ::1 | GET      \"/docs/favicon-32x32.png\"","time":"2023-04-21T13:39:59+08:00"}
+{"level":"info","msg":"Database and tables created!","time":"2023-04-21T14:09:53+08:00"}
+{"level":"info","msg":"Configuration file is loaded!","time":"2023-04-21T14:09:54+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 14:10:02 | 200 |            0s |             ::1 | GET      \"/docs/index.html\"","time":"2023-04-21T14:10:02+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 14:10:02 | 200 |      1.5245ms |             ::1 | GET      \"/docs/swagger-ui.css\"","time":"2023-04-21T14:10:02+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 14:10:02 | 200 |      1.7664ms |             ::1 | GET      \"/docs/swagger-ui-standalone-preset.js\"","time":"2023-04-21T14:10:02+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 14:10:02 | 200 |     10.3561ms |             ::1 | GET      \"/docs/swagger-ui-bundle.js\"","time":"2023-04-21T14:10:02+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 14:10:02 | 200 |       678.8µs |             ::1 | GET      \"/docs/doc.json\"","time":"2023-04-21T14:10:02+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 14:10:02 | 200 |      1.9486ms |             ::1 | GET      \"/docs/favicon-32x32.png\"","time":"2023-04-21T14:10:02+08:00"}
+{"level":"info","msg":"Database and tables created!","time":"2023-04-21T14:12:17+08:00"}
+{"level":"info","msg":"Configuration file is loaded!","time":"2023-04-21T14:12:18+08:00"}
+{"level":"info","msg":"Database and tables created!","time":"2023-04-21T14:13:39+08:00"}
+{"level":"info","msg":"Configuration file is loaded!","time":"2023-04-21T14:13:39+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 14:15:06 | 200 |      1.6287ms |             ::1 | GET      \"/docs/index.html\"","time":"2023-04-21T14:15:06+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 14:15:06 | 200 |      4.3425ms |             ::1 | GET      \"/docs/swagger-ui.css\"","time":"2023-04-21T14:15:06+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 14:15:06 | 200 |      2.1097ms |             ::1 | GET      \"/docs/swagger-ui-standalone-preset.js\"","time":"2023-04-21T14:15:06+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 14:15:06 | 200 |      8.7719ms |             ::1 | GET      \"/docs/swagger-ui-bundle.js\"","time":"2023-04-21T14:15:06+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 14:15:06 | 200 |     14.6748ms |             ::1 | GET      \"/docs/doc.json\"","time":"2023-04-21T14:15:06+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/21 - 14:15:06 | 200 |     15.4197ms |             ::1 | GET      \"/docs/favicon-32x32.png\"","time":"2023-04-21T14:15:06+08:00"}
