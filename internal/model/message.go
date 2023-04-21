@@ -42,7 +42,7 @@ type Message struct {
 }
 
 // 创建消息
-func CreateMessage(sender string, receiver string, content string, messageType MessageType) *Message {
+func NewMessage(sender string, receiver string, content string, messageType MessageType) *Message {
 	// 生成消息 ID
 	id := uuid.New().String()
 	now := time.Now()
@@ -72,5 +72,3 @@ func (message *Message) Marshal() ([]byte, error) {
 func (message *Message) Unmarshal(data []byte) error {
 	return json.Unmarshal(data, message)
 }
-
-// 保存消息

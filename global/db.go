@@ -15,22 +15,22 @@ func InitDB() (err error) {
 		MaxOpen:    10,
 	})
 	if err != nil {
-		return err
+		return
 	}
 	// 创建 chat 数据库
 	_, err = r.DBCreate("chat").RunWrite(Session)
 	if err != nil {
-		return err
+		return
 	}
 	// 创建 users 表
 	_, err = r.DB("chat").TableCreate("users").RunWrite(Session)
 	if err != nil {
-		return err
+		return
 	}
 	// 创建 messages 表
 	_, err = r.DB("chat").TableCreate("messages").RunWrite(Session)
 	if err != nil {
-		return err
+		return
 	}
 	return
 }

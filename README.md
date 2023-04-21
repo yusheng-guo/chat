@@ -3,6 +3,27 @@ Chat system developed using Gin and github.com/gobwas/ws!
 
 ### Project Design
 ##### Build Project Catalog Structure
+```shell
+chat
+├─api    # 接口
+│  └─v1  # 版本
+├─assets # 静态资源
+│  ├─images      # 图片
+│  └─screenshots # 截图
+├─client   # 简单的客户端实现
+├─config   # 配置处理
+├─docs     # swagger生成的接口文档
+├─internal # 内部文件
+│  ├─dao     # 数据访问层
+│  ├─middleware # 中间件
+│  ├─model   # 模型
+│  ├─routers # 路由
+│  └─service # 服务
+├─log    # 日志处理
+├─tmp    # 临时文件
+├─utils  # 工具函数
+└─vendor # 项目以来的第三方库
+```
 ##### Create Database
 - Database: chat
 - Charts: users, messages
