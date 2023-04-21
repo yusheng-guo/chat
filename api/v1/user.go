@@ -64,7 +64,7 @@ func Admin(c *gin.Context) {}
 // @Failure 400 {object} ErrorResponse
 // @Failure 401 {object} ErrorResponse
 // @Failure 404 {object} ErrorResponse
-// @Router /v1/me [get]
+// @Router /v1/me/info [get]
 func GetMyInfo(c *gin.Context) {}
 
 // @Summary 更新我的个人信息
@@ -77,5 +77,5 @@ func GetMyInfo(c *gin.Context) {}
 // @Failure 400 {object} ErrorResponse
 // @Failure 401 {object} ErrorResponse
 // @Failure 404 {object} ErrorResponse
-// @Router /v1/me [put]
+// @Router /v1/me/info [put]
 func UpdateMyInfo(c *gin.Context) {}
