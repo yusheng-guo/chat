@@ -1,10 +1,6 @@
 # github.com/KyleBanks/depth v1.2.1
 ## explicit
 github.com/KyleBanks/depth
-# github.com/PuerkitoBio/purell v1.2.0
-## explicit; go 1.19
-# github.com/PuerkitoBio/urlesc v0.0.0-20170810143723-de5bf2ad4578
-## explicit
 # github.com/bytedance/sonic v1.8.7
 ## explicit; go 1.15
 github.com/bytedance/sonic
@@ -29,8 +25,6 @@ github.com/bytedance/sonic/utf8
 # github.com/chenzhuoyu/base64x v0.0.0-20221115062448-fe3a3abad311
 ## explicit; go 1.15
 github.com/chenzhuoyu/base64x
-# github.com/cpuguy83/go-md2man/v2 v2.0.2
-## explicit; go 1.11
 # github.com/fsnotify/fsnotify v1.6.0
 ## explicit; go 1.16
 github.com/fsnotify/fsnotify
@@ -143,10 +137,6 @@ github.com/pelletier/go-toml/v2/internal/characters
 github.com/pelletier/go-toml/v2/internal/danger
 github.com/pelletier/go-toml/v2/internal/tracker
 github.com/pelletier/go-toml/v2/unstable
-# github.com/russross/blackfriday/v2 v2.1.0
-## explicit
-# github.com/shurcooL/sanitized_anchor_name v1.0.0
-## explicit
 # github.com/sirupsen/logrus v1.9.0
 ## explicit; go 1.13
 github.com/sirupsen/logrus
@@ -209,10 +199,6 @@ github.com/twitchyliquid64/golang-asm/unsafeheader
 # github.com/ugorji/go/codec v1.2.11
 ## explicit; go 1.11
 github.com/ugorji/go/codec
-# github.com/urfave/cli/v2 v2.25.1
-## explicit; go 1.18
-# github.com/xrash/smetrics v0.0.0-20201216005158-039620a65673
-## explicit
 # golang.org/x/arch v0.3.0
 ## explicit; go 1.17
 golang.org/x/arch/x86/x86asm
@@ -296,10 +282,6 @@ gopkg.in/rethinkdb/rethinkdb-go.v6
 gopkg.in/rethinkdb/rethinkdb-go.v6/encoding
 gopkg.in/rethinkdb/rethinkdb-go.v6/ql2
 gopkg.in/rethinkdb/rethinkdb-go.v6/types
-# gopkg.in/yaml.v2 v2.4.0
-## explicit; go 1.15
 # gopkg.in/yaml.v3 v3.0.1
 ## explicit
 gopkg.in/yaml.v3
-# sigs.k8s.io/yaml v1.3.0
-## explicit; go 1.12

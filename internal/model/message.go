@@ -2,10 +2,10 @@
 package model
 
 import (
-	"encoding/json"
 	"time"
 
 	"github.com/google/uuid"
+	"github.com/yushengguo557/chat/global"
 )
 
 // MessageStatus 消息状态
@@ -65,10 +65,10 @@ func NewMessage(sender string, receiver string, content string, messageType Mess
 
 // 序列化消息
 func (message *Message) Marshal() ([]byte, error) {
-	return json.Marshal(message)
+	return global.Json.Marshal(message)
 }
 
 // 反序列化
 func (message *Message) Unmarshal(data []byte) error {
-	return json.Unmarshal(data, message)
+	return global.Json.Unmarshal(data, message)
 }
