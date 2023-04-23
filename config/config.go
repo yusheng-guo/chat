@@ -1,6 +1,7 @@
 package config
 
 import (
+	"fmt"
 	"log"
 
 	"github.com/fsnotify/fsnotify"
@@ -49,7 +50,7 @@ func NewConfig() (cfg *Config, err error) {
 	cfg.AddConfigPath("./config") // 添加配置路径(当前工作目录)
 	err = cfg.ReadInConfig()      // 读入配置
 	if err != nil {               // 找到并读取配置文件
-		return nil, err
+		return nil, fmt.Errorf("reading in configs: %w", err)
 	}
 	// 配置文件发生改变 重新读取
 	cfg.OnConfigChange(func(e fsnotify.Event) {
@@ -63,7 +64,7 @@ func NewConfig() (cfg *Config, err error) {
 func (cfg *Config) ReadSection(k string, v any) (err error) {
 	err = cfg.UnmarshalKey(k, v) // 接收一个单件并转换为结构体
 	if err != nil {
-		return err
+		return fmt.Errorf("unmarshalKey config: %w", err)
 	}
 	return nil
 }

@@ -2,6 +2,8 @@
 package global
 
 import (
+	"fmt"
+
 	"github.com/yushengguo557/chat/config"
 )
 
@@ -15,15 +17,15 @@ func InitConfig() (err error) {
 	var cfg *config.Config
 	cfg, err = config.NewConfig()
 	if err != nil {
-		return err
+		return fmt.Errorf("creating a new config: %w", err)
 	}
 	err = cfg.ReadSection("Server", &ServerConfig)
 	if err != nil {
-		return err
+		return fmt.Errorf("reading section to global var ServerConfig: %w", err)
 	}
 	err = cfg.ReadSection("Database", &DBConfig)
 	if err != nil {
-		return err
+		return fmt.Errorf("reading section to global var DBConfig: %w", err)
 	}
 	return
 }
