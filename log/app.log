@@ -198,3 +198,20 @@
 {"level":"info","msg":"[GIN] 2023/04/24 - 22:23:50 | 200 |      2.0676ms |       127.0.0.1 | GET      \"/docs/swagger-ui-standalone-preset.js.map\"","time":"2023-04-24T22:23:50+08:00"}
 {"level":"info","msg":"[GIN] 2023/04/24 - 22:23:50 | 200 |         998µs |       127.0.0.1 | GET      \"/docs/doc.json\"","time":"2023-04-24T22:23:50+08:00"}
 {"level":"info","msg":"[GIN] 2023/04/24 - 22:23:51 | 200 |       559.9µs |       127.0.0.1 | GET      \"/docs/favicon-32x32.png\"","time":"2023-04-24T22:23:51+08:00"}
+{"level":"info","msg":"Database and tables created!","time":"2023-04-25T00:22:22+08:00"}
+{"level":"info","msg":"Configuration file is loaded!","time":"2023-04-25T00:22:22+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/25 - 00:25:32 | 200 |     67.2371ms |       127.0.0.1 | POST     \"/v1/register\"","time":"2023-04-25T00:25:32+08:00"}
+{"level":"info","msg":"Database and tables created!","time":"2023-04-25T00:26:16+08:00"}
+{"level":"info","msg":"Configuration file is loaded!","time":"2023-04-25T00:26:16+08:00"}
+{"level":"info","msg":"Database and tables created!","time":"2023-04-25T00:26:27+08:00"}
+{"level":"info","msg":"Configuration file is loaded!","time":"2023-04-25T00:26:27+08:00"}
+{"level":"info","msg":"Database and tables created!","time":"2023-04-25T00:26:27+08:00"}
+{"level":"info","msg":"Configuration file is loaded!","time":"2023-04-25T00:26:27+08:00"}
+{"level":"warning","msg":"listen tcp :8080: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted.","time":"2023-04-25T00:26:27+08:00"}
+{"level":"info","msg":"Database and tables created!","time":"2023-04-25T00:26:27+08:00"}
+{"level":"info","msg":"Configuration file is loaded!","time":"2023-04-25T00:26:27+08:00"}
+{"level":"warning","msg":"listen tcp :8080: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted.","time":"2023-04-25T00:26:27+08:00"}
+{"level":"info","msg":"Database and tables created!","time":"2023-04-25T00:27:27+08:00"}
+{"level":"info","msg":"Configuration file is loaded!","time":"2023-04-25T00:27:27+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/25 - 00:27:34 | 500 |     24.4144ms |       127.0.0.1 | POST     \"/v1/register\"","time":"2023-04-25T00:27:34+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/25 - 00:27:45 | 200 |     58.4247ms |       127.0.0.1 | POST     \"/v1/register\"","time":"2023-04-25T00:27:45+08:00"}

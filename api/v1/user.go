@@ -1,6 +1,11 @@
 package v1
 
-import "github.com/gin-gonic/gin"
+import (
+	"net/http"
+
+	"github.com/gin-gonic/gin"
+	"github.com/yushengguo557/chat/internal/service"
+)
 
 // @Summary 用户注册
 // @Description 使用电子邮件进行注册
@@ -13,7 +18,20 @@ import "github.com/gin-gonic/gin"
 // @Failure 401 {object} ErrorResponse
 // @Failure 404 {object} ErrorResponse
 // @Router /v1/register [post]
-func Register(c *gin.Context) {}
+func Register(c *gin.Context) {
+	param := &service.RegisterRequest{}
+	svc := service.NewService(c.Request.Context())
+	if err := c.Bind(param); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+	err := svc.Register(param) // 用户注册
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+	}
+	c.JSON(http.StatusOK, gin.H{"message": "User register successfully"})
+}
 
 // @Summary 用户登录
 // @Description 使用电子邮件和明码进行登录

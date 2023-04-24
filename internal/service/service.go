@@ -14,7 +14,7 @@ type Service struct {
 }
 
 // New 实例化 Service
-func New(ctx context.Context) Service {
+func NewService(ctx context.Context) Service {
 	return Service{
 		ctx: ctx,
 		dao: dao.New(global.Session),

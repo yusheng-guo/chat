@@ -16,22 +16,22 @@ type RegisterRequest struct {
 
 // Register 注册用户
 func (s *Service) Register(r *RegisterRequest) (err error) {
-	// 验证邮箱合法性
-	// 验证密码合法性
-	// 查询数据库中是否已经有该邮箱
+	// 1.验证邮箱\密码合法性
+	// 2.查询数据库中是否已经有该邮箱
 	var user *model.User
-	user, err = s.dao.FindUserByEmail(r.Email)
-	if err != nil {
-		return err
-	}
+	user, _ = s.dao.FindUserByEmail(r.Email)
 	if user != nil {
 		return fmt.Errorf("users are already registered")
 	}
+	// 3.创建用户
 	user = model.NewUser()
 	user.Email = r.Email
 	user.Password = r.Password
-	user.Name = r.Email[:strings.IndexRune(r.Email, '@')+1] // 默认用户名
-
-	// 将用户信息保存到数据库
-	return s.dao.InsertUser(user)
+	user.Name = r.Email[:strings.IndexRune(r.Email, '@')] // 默认用户名
+	// 4.将用户信息保存到数据库
+	err = s.dao.InsertUser(user)
+	if err != nil {
+		return fmt.Errorf("insert user when registering a user: %w", err)
+	}
+	return nil
 }

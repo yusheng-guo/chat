@@ -8,10 +8,13 @@ import (
 
 var Session *r.Session
 
+var ErrEmptyResult = r.ErrEmptyResult
+
 func InitDB() (err error) {
 	// TODO: 初始化数据库
 	// Connection Pool
 	// web url: http://119.91.204.226:32770/
+	// r.error
 	Session, err = r.Connect(r.ConnectOpts{
 		Address:    "119.91.204.226:32769",
 		InitialCap: 10,
