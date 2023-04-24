@@ -2,7 +2,6 @@
 package model
 
 import (
-	"strings"
 	"time"
 
 	"github.com/google/uuid"
@@ -49,23 +48,15 @@ type User struct {
 	LastLoginAt    *time.Time        `json:"last_login_at,omitempty" gorethink:"last_login_at,omitempty"`
 }
 
-// Register 用户注册
-func Register(email, password string) (*User, error) {
-	// 如果数据库中有该对应关系 返回注册失败
-	uid := uuid.New().String()
+// NewUser 实例化User
+func NewUser() *User {
 	now := time.Now()
-	u := &User{
+	return &User{
 		Model: &Model{
-			ID:        uid,
+			ID:        uuid.New().String(),
 			CreatedAt: &now,
 		},
-		Name:     email[:strings.IndexRune(email, '@')+1], // 默认用户名
-		Email:    email,
-		Password: password,
 	}
-	// 将用户信息保存到数据库
-	// global.Session
-	return u, nil
 }
 
 // CreateUser 新建用户

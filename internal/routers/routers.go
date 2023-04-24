@@ -17,6 +17,7 @@ func NewRouter() *gin.Engine {
 	r.Use(gin.LoggerWithWriter(global.Logger.Writer())) // 自定义中间件
 	docs.SwaggerInfo.BasePath = "http://localhost:8080/"
 	r.GET("/docs/*any", ginSwagger.WrapHandler(swaggerfiles.Handler))
+	// http://127.0.0.1:8080/docs/index.html
 	apiv1 := r.Group("/v1") // 路由组
 	{
 		apiv1.POST("/register", v1.Register)

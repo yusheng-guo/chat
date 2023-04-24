@@ -170,3 +170,31 @@
 {"level":"info","msg":"[GIN] 2023/04/21 - 14:15:06 | 200 |      8.7719ms |             ::1 | GET      \"/docs/swagger-ui-bundle.js\"","time":"2023-04-21T14:15:06+08:00"}
 {"level":"info","msg":"[GIN] 2023/04/21 - 14:15:06 | 200 |     14.6748ms |             ::1 | GET      \"/docs/doc.json\"","time":"2023-04-21T14:15:06+08:00"}
 {"level":"info","msg":"[GIN] 2023/04/21 - 14:15:06 | 200 |     15.4197ms |             ::1 | GET      \"/docs/favicon-32x32.png\"","time":"2023-04-21T14:15:06+08:00"}
+{"level":"info","msg":"Database and tables created!","time":"2023-04-24T22:17:00+08:00"}
+{"level":"info","msg":"Configuration file is loaded!","time":"2023-04-24T22:17:00+08:00"}
+{"level":"info","msg":"Database and tables created!","time":"2023-04-24T22:18:29+08:00"}
+{"level":"info","msg":"Configuration file is loaded!","time":"2023-04-24T22:18:29+08:00"}
+{"level":"info","msg":"Database and tables created!","time":"2023-04-24T22:18:44+08:00"}
+{"level":"info","msg":"Configuration file is loaded!","time":"2023-04-24T22:18:44+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/24 - 22:18:53 | 404 |            0s |             ::1 | GET      \"/docs/\"","time":"2023-04-24T22:18:53+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/24 - 22:18:53 | 404 |            0s |             ::1 | GET      \"/favicon.ico\"","time":"2023-04-24T22:18:53+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/24 - 22:19:12 | 404 |            0s |       127.0.0.1 | GET      \"/docs/\"","time":"2023-04-24T22:19:12+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/24 - 22:19:13 | 404 |            0s |       127.0.0.1 | GET      \"/favicon.ico\"","time":"2023-04-24T22:19:13+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/24 - 22:19:45 | 404 |            0s |       127.0.0.1 | GET      \"/docs/index.json\"","time":"2023-04-24T22:19:45+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/24 - 22:19:50 | 404 |            0s |       127.0.0.1 | GET      \"/\"","time":"2023-04-24T22:19:50+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/24 - 22:20:16 | 404 |            0s |       127.0.0.1 | GET      \"/v1/login\"","time":"2023-04-24T22:20:16+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/24 - 22:20:28 | 404 |            0s |       127.0.0.1 | GET      \"/v1/login\"","time":"2023-04-24T22:20:28+08:00"}
+{"level":"info","msg":"Database and tables created!","time":"2023-04-24T22:20:37+08:00"}
+{"level":"info","msg":"Configuration file is loaded!","time":"2023-04-24T22:20:37+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/24 - 22:21:00 | 200 |            0s |       127.0.0.1 | GET      \"/v1/me\"","time":"2023-04-24T22:21:00+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/24 - 22:23:37 | 404 |            0s |       127.0.0.1 | GET      \"/\"","time":"2023-04-24T22:23:37+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/24 - 22:23:44 | 404 |            0s |       127.0.0.1 | GET      \"/docs/\"","time":"2023-04-24T22:23:44+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/24 - 22:23:50 | 200 |       511.6µs |       127.0.0.1 | GET      \"/docs/index.html\"","time":"2023-04-24T22:23:50+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/24 - 22:23:50 | 200 |       512.6µs |       127.0.0.1 | GET      \"/docs/swagger-ui.css\"","time":"2023-04-24T22:23:50+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/24 - 22:23:50 | 200 |       529.7µs |       127.0.0.1 | GET      \"/docs/swagger-ui-standalone-preset.js\"","time":"2023-04-24T22:23:50+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/24 - 22:23:50 | 200 |      5.5413ms |       127.0.0.1 | GET      \"/docs/swagger-ui-bundle.js\"","time":"2023-04-24T22:23:50+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/24 - 22:23:50 | 200 |       648.2µs |       127.0.0.1 | GET      \"/docs/swagger-ui.css.map\"","time":"2023-04-24T22:23:50+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/24 - 22:23:50 | 200 |      4.2557ms |       127.0.0.1 | GET      \"/docs/swagger-ui-bundle.js.map\"","time":"2023-04-24T22:23:50+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/24 - 22:23:50 | 200 |      2.0676ms |       127.0.0.1 | GET      \"/docs/swagger-ui-standalone-preset.js.map\"","time":"2023-04-24T22:23:50+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/24 - 22:23:50 | 200 |         998µs |       127.0.0.1 | GET      \"/docs/doc.json\"","time":"2023-04-24T22:23:50+08:00"}
+{"level":"info","msg":"[GIN] 2023/04/24 - 22:23:51 | 200 |       559.9µs |       127.0.0.1 | GET      \"/docs/favicon-32x32.png\"","time":"2023-04-24T22:23:51+08:00"}

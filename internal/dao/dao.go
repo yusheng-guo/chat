@@ -6,7 +6,7 @@ type Dao struct {
 	*r.Session
 }
 
-// NewDao 实例化 Dao 结构体
-func NewDao(s *r.Session) *Dao {
+// New 实例化 Dao 结构体
+func New(s *r.Session) *Dao {
 	return &Dao{Session: s}
 }

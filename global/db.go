@@ -35,5 +35,10 @@ func InitDB() (err error) {
 	if err != nil {
 		return fmt.Errorf("creating table messages in chat: %w", err)
 	}
+	// 选择 chat 数据库
+	// _, err = r.DB("chat").Run(Session)
+	// if err != nil {
+	// 	return fmt.Errorf("selecting chat database: %w", err)
+	// }
 	return
 }
