@@ -70,5 +70,5 @@ func (message *Message) Marshal() ([]byte, error) {
 
 // 反序列化
 func (message *Message) Unmarshal(data []byte) error {
-	return global.Json.Unmarshal(data, message)
+	return global.Json.Unmarshal(data, &message)
 }

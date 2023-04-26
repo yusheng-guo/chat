@@ -12,8 +12,8 @@ var (
 	ServerConfig *config.ServerConfigS // 服务器配置
 )
 
+// InitConfig 建立配置 对全局变量进行赋值
 func InitConfig() (err error) {
-	// TODO: 建立配置 对全局变量进行赋值
 	var cfg *config.Config
 	cfg, err = config.NewConfig()
 	if err != nil {

@@ -43,6 +43,7 @@ func (s *Service) Register(r *RegisterRequest) *RegisterResponse {
 			Message: "Mailbox format error.",
 		}
 	}
+
 	// 2.查询数据库中是否已经有该邮箱
 	var user *model.User
 	user, _ = s.dao.FindUserByEmail(r.Email)
@@ -52,11 +53,13 @@ func (s *Service) Register(r *RegisterRequest) *RegisterResponse {
 			Message: "User are already registered.",
 		}
 	}
+
 	// 3.创建用户
 	user = model.NewUser()
 	user.Email = r.Email
 	user.Password = r.Password
 	user.Name = r.Email[:strings.IndexRune(r.Email, '@')] // 默认用户名
+
 	// 4.将用户信息保存到数据库
 	err := s.dao.InsertUser(user)
 	if err != nil {
@@ -82,6 +85,7 @@ func (s Service) Login(re *LoginRequest) *LoginResponse {
 			Message: "User does not exist.",
 		}
 	}
+
 	// 2.密码是否正确
 	if u.Password != re.Password {
 		return &LoginResponse{
@@ -89,6 +93,11 @@ func (s Service) Login(re *LoginRequest) *LoginResponse {
 			Message: "Password error.",
 		}
 	}
+
+	// 3.加入到在线用户redis数据库中
+	s.dao.AddOnlineUser(u.ID)
+
+	// 4.响应
 	return &LoginResponse{
 		Code:    http.StatusOK,
 		Message: "Login successful!",

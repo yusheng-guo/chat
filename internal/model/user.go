@@ -58,18 +58,3 @@ func NewUser() *User {
 		},
 	}
 }
-
-// CreateUser 新建用户
-func CreateUser(user *User) error {
-	// TODO：实现创建用户的逻辑，调用 dao 层的方法插入到数据库中
-	return nil
-}
-
-// Login 用户登录
-func Login(email, password string) error {
-	// TODO: 实现用户登录的逻辑
-	// 登录
-	// 查询数据库中 是否存在该对应关系
-	// 如果没有该对应关系 登录失败
-	return nil
-}
