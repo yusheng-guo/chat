@@ -25,12 +25,8 @@ func Register(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
-	err := svc.Register(param) // 用户注册
-	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
-		return
-	}
-	c.JSON(http.StatusOK, gin.H{"message": "User register successfully"})
+	ret := svc.Register(param) // 用户注册
+	c.JSON(ret.Code, gin.H{"message": ret.Message})
 }
 
 // @Summary 用户登录
@@ -44,7 +40,16 @@ func Register(c *gin.Context) {
 // @Failure 401 {object} ErrorResponse
 // @Failure 404 {object} ErrorResponse
 // @Router /v1/login [post]
-func Login(c *gin.Context) {}
+func Login(c *gin.Context) {
+	param := &service.LoginRequest{}
+	svc := service.NewService(c.Request.Context())
+	if err := c.Bind(param); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+	ret := svc.Login(param) // 用户登录
+	c.JSON(ret.Code, gin.H{"message": ret.Message})
+}
 
 // @Summary 用户登出
 // @Description Log out
