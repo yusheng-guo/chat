@@ -98,7 +98,7 @@ func (s Service) Login(re *LoginRequest) *LoginResponse {
 
 	// 4.加入到在线用户redis数据库中
 	if err := s.dao.AddOnlineUser(onlineuser); err != nil {
-		fmt.Errorf("adding onlineuser to redis in `Login Function`: %w", err)
+		global.Logger.Warn("adding onlineuser to redis in `Login Function`: %w", err)
 		return &LoginResponse{
 			Code:    http.StatusInternalServerError,
 			Message: "Try again later.",
