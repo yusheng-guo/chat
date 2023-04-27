@@ -11,6 +11,7 @@ import (
 type Service struct {
 	ctx context.Context
 	dao *dao.Dao
+	// conn *net.Conn
 }
 
 // New 实例化 Service

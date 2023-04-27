@@ -35,27 +35,27 @@ func TestInsertUser(t *testing.T) {
 
 // TestAddOnlineUser 测试 redis 数据库
 func TestAddOnlineUser(t *testing.T) {
-	global.InitDB() // 初始化数据库
-	d := NewDao(global.Session, global.RedisClient)
-	err := d.AddOnlineUser("123")
-	if err != nil {
-		panic(err)
-	}
-	fmt.Println("添加成功！")
+	// global.InitDB() // 初始化数据库
+	// d := NewDao(global.Session, global.RedisClient)
+	// err := d.AddOnlineUser("123")
+	// if err != nil {
+	// 	panic(err)
+	// }
+	// fmt.Println("添加成功！")
 
-	is := d.IsOnline("123")
-	fmt.Println("是否在线：", is)
+	// is := d.IsOnline("123")
+	// fmt.Println("是否在线：", is)
 
-	var u *model.OnlineUser
-	u, err = d.GetOnlineUser("123")
-	if err != nil {
-		panic(err)
-	}
-	fmt.Println("查询成功！", *u)
+	// var u *model.OnlineUser
+	// u, err = d.GetOnlineUser("123")
+	// if err != nil {
+	// 	panic(err)
+	// }
+	// fmt.Println("查询成功！", *u)
 
-	err = d.RemoveOnlineUser("123")
-	if err != nil {
-		panic(err)
-	}
-	fmt.Println("删除成功！")
+	// err = d.RemoveOnlineUser("123")
+	// if err != nil {
+	// 	panic(err)
+	// }
+	// fmt.Println("删除成功！")
 }

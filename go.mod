@@ -5,6 +5,7 @@ go 1.20
 require (
 	github.com/fsnotify/fsnotify v1.6.0
 	github.com/gin-gonic/gin v1.9.0
+	github.com/gobwas/ws v1.2.0
 	github.com/google/uuid v1.3.0
 	github.com/redis/go-redis/v9 v9.0.3
 	github.com/spf13/viper v1.15.0
@@ -21,6 +22,8 @@ require (
 	github.com/go-openapi/jsonreference v0.20.2 // indirect
 	github.com/go-openapi/spec v0.20.8 // indirect
 	github.com/go-openapi/swag v0.22.3 // indirect
+	github.com/gobwas/httphead v0.1.0 // indirect
+	github.com/gobwas/pool v0.2.1 // indirect
 	github.com/josharian/intern v1.0.0 // indirect
 	github.com/mailru/easyjson v0.7.7 // indirect
 	golang.org/x/tools v0.8.0 // indirect

@@ -93,11 +93,19 @@ func (s Service) Login(re *LoginRequest) *LoginResponse {
 			Message: "Password error.",
 		}
 	}
+	// 3.新建在线用户
+	onlineuser := model.NewOnlineUser(u.ID)
 
-	// 3.加入到在线用户redis数据库中
-	s.dao.AddOnlineUser(u.ID)
+	// 4.加入到在线用户redis数据库中
+	if err := s.dao.AddOnlineUser(onlineuser); err != nil {
+		fmt.Errorf("adding onlineuser to redis in `Login Function`: %w", err)
+		return &LoginResponse{
+			Code:    http.StatusInternalServerError,
+			Message: "Try again later.",
+		}
+	}
 
-	// 4.响应
+	// 5.响应
 	return &LoginResponse{
 		Code:    http.StatusOK,
 		Message: "Login successful!",

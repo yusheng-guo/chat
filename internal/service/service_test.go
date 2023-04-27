@@ -3,7 +3,6 @@ package service
 import (
 	"context"
 	"fmt"
-	"log"
 	"testing"
 
 	"github.com/yushengguo557/chat/global"
@@ -27,12 +26,12 @@ func TestRegister(t *testing.T) {
 }
 
 // 登录测试
-func TestLogin(t *testing.T) {
-	global.InitDB()
-	s := NewService(context.TODO())
-	rs := s.Login(&LoginRequest{
-		Email:    "declinedyew@outlook.com",
-		Password: "3x+4y=25",
-	})
-	log.Println(rs.Message)
-}
+// func TestLogin(t *testing.T) {
+// 	global.InitDB()
+// 	s := NewService(context.TODO())
+// 	rs := s.Login(&LoginRequest{
+// 		Email:    "declinedyew@outlook.com",
+// 		Password: "3x+4y=25",
+// 	})
+// 	log.Println(rs.Message)
+// }

@@ -10,18 +10,15 @@ import (
 var ctx = context.Background()
 
 // AddOnlineUser 添加在线用户
-func (d *Dao) AddOnlineUser(id string) (err error) {
-	// 1.新建用户
-	user := model.NewOnlineUser(id)
-
-	// 2.序列化用户
+func (d *Dao) AddOnlineUser(user *model.OnlineUser) (err error) {
+	// 1.序列化用户
 	var serialized []byte
 	if serialized, err = user.Marshal(); err != nil {
 		return fmt.Errorf("serialize user struct when adding online user: %w", err)
 	}
 
-	// 3.添加user到redis中
-	if err = d.Client.HSet(ctx, "online_users", id, string(serialized)).Err(); err != nil {
+	// 2.添加user到redis中
+	if err = d.Client.HSet(ctx, "online_users", user.ID, string(serialized)).Err(); err != nil {
 		return fmt.Errorf("adding online user to redis: %w", err)
 	}
 	return nil
@@ -29,6 +26,15 @@ func (d *Dao) AddOnlineUser(id string) (err error) {
 
 // RemoveOnlineUser 移除在线用户
 func (d *Dao) RemoveOnlineUser(id string) (err error) {
+	// 1.找到用户 关闭 websocket 连接
+	user, err := d.GetOnlineUser(id)
+	if err != nil {
+		return fmt.Errorf("get online user in `RemoveOnlineUser Function`: %w", err)
+	}
+	if err = user.Conn.Close(); err != nil {
+		return fmt.Errorf("close WebSocket Connection: %w", err)
+	}
+	// 2.删除用户
 	if err = d.Client.HDel(ctx, "online_users", id).Err(); err != nil {
 		return fmt.Errorf("removing online user to redis: %w", err)
 	}

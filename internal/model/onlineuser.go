@@ -1,14 +1,16 @@
 package model
 
 import (
+	"net"
+
 	"github.com/yushengguo557/chat/global"
 )
 
 // OnlineUser 在线用户
 type OnlineUser struct {
-	ID string `json:"id"` // 用户ID
+	ID   string   `json:"id"`   // 用户ID
+	Conn net.Conn `json:"conn"` // 用户读写连接
 	// IO   sync.Mutex         `json:"io"`   // 互斥锁
-	// Conn io.ReadWriteCloser `json:"conn"` // 用户读写连接
 }
 
 // NewOnlineUser 实例化 OnlineUser 结构体

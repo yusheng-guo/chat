@@ -47,7 +47,7 @@ func Login(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
-	ret := svc.Login(param) // 用户登录
+	ret := svc.Login(param)
 	c.JSON(ret.Code, gin.H{"message": ret.Message})
 }
 

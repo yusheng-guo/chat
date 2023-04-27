@@ -1,6 +1,8 @@
 package v1
 
-import "github.com/gin-gonic/gin"
+import (
+	"github.com/gin-gonic/gin"
+)
 
 // @Summary 发送消息
 // @Description 发送我要发送的消息
@@ -14,8 +16,6 @@ import "github.com/gin-gonic/gin"
 // @Failure 404 {object} ErrorResponse
 // @Router /v1/message [post]
 func SendMessage(c *gin.Context) {
-	// TODO: 实现发送消息的逻辑
-	// content string, recipientID string
 }
 
 // @Summary 删除消息
@@ -31,7 +31,6 @@ func SendMessage(c *gin.Context) {
 // @Failure 404 {object} ErrorResponse
 // @Router /v1/message/:id [delete]
 func DeleteMessage(c *gin.Context) {
-	// TODO: 实现删除消息的逻辑
 }
 
 // @Summary 更新消息
@@ -47,7 +46,6 @@ func DeleteMessage(c *gin.Context) {
 // @Failure 404 {object} ErrorResponse
 // @Router /v1/message/:id [put]
 func UpdateMessage(c *gin.Context) {
-	// TODO: 实现删除消息的逻辑
 }
 
 // @Summary 接收消息
@@ -62,5 +60,5 @@ func UpdateMessage(c *gin.Context) {
 // @Failure 404 {object} ErrorResponse
 // @Router /v1/message [get]
 func ReceiveMessage(c *gin.Context) {
-	// TODO: 实现接收消息的逻辑
+	// svc := service.NewService(c.Request.Context())
 }

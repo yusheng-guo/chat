@@ -37,6 +37,8 @@ func NewRouter() *gin.Engine {
 		apiv1.DELETE("/message/:id", v1.DeleteMessage)
 		apiv1.PUT("/message/:id", v1.UpdateMessage)
 		apiv1.GET("/message", v1.ReceiveMessage)
+
+		apiv1.GET("/ws", v1.Communicate)
 	}
 	return r
 }
