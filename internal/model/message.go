@@ -38,6 +38,7 @@ type Message struct {
 	Content  string        `json:"content" gorethink:"content"`   // 消息内容
 	State    MessageStatus `json:"state" gorethink:"state"`       // 消息状态
 	Type     MessageType   `json:"type" gorethink:"type"`         // 消息类型
+	// FileName string        `json:"file_name" gorethink:"file_name"` // 文件名称
 	// Timestamp time.Time     `json:"timestamp" gorethink:"timestamp"` // 时间戳
 }
 
