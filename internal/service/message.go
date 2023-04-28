@@ -87,8 +87,6 @@ func (s *Service) ReceiveAndSend(sourceConn, targetConn net.Conn) error {
 	}
 }
 
-var OnlineUsers map[string]model.OnlineUser
-
 func (s *Service) Communicate(conn net.Conn) error {
 	// 1.reader 和 decoder
 	r := wsutil.NewReader(conn, ws.StateServerSide)
