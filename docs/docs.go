@@ -354,15 +354,6 @@ const docTemplate = `{
                     "user"
                 ],
                 "summary": "用户登录",
-                "parameters": [
-                    {
-                        "type": "string",
-                        "description": "Bearer {token}",
-                        "name": "Authorization",
-                        "in": "header",
-                        "required": true
-                    }
-                ],
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -441,7 +432,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/v1/me": {
+        "/v1/me/info": {
             "get": {
                 "description": "获取我的个人信息",
                 "consumes": [
@@ -762,7 +753,55 @@ const docTemplate = `{
                     "user"
                 ],
                 "summary": "用户注册",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/v1.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/v1.ErrorResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/v1.ErrorResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/v1.ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/ws": {
+            "get": {
+                "description": "通过建立websocket协议进行用户间通信 收发消息",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "ws"
+                ],
+                "summary": "用户通信",
                 "parameters": [
+                    {
+                        "type": "string",
+                        "description": "ID",
+                        "name": "user_id",
+                        "in": "path",
+                        "required": true
+                    },
                     {
                         "type": "string",
                         "description": "Bearer {token}",
@@ -812,8 +851,8 @@ const docTemplate = `{
             "x-enum-comments": {
                 "Female": "女性",
                 "Ladyboy": "中性",
-                "Male": "男性",
-                "Other": "其他（未知）"
+                "Male": "男性(默认)",
+                "Other": "其他(未知或者隐藏)"
             },
             "x-enum-varnames": [
                 "Male",
@@ -930,11 +969,11 @@ const docTemplate = `{
             "x-enum-comments": {
                 "Admin": "管理员",
                 "Bot": "机器人",
-                "GeneralUser": "普通人"
+                "GeneralUser": "普通人(默认)"
             },
             "x-enum-varnames": [
-                "Admin",
                 "GeneralUser",
+                "Admin",
                 "Bot"
             ]
         },

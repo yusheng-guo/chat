@@ -9,8 +9,8 @@ definitions:
     x-enum-comments:
       Female: 女性
       Ladyboy: 中性
-      Male: 男性
-      Other: 其他（未知）
+      Male: 男性(默认)
+      Other: 其他(未知或者隐藏)
     x-enum-varnames:
     - Male
     - Female
@@ -94,10 +94,10 @@ definitions:
     x-enum-comments:
       Admin: 管理员
       Bot: 机器人
-      GeneralUser: 普通人
+      GeneralUser: 普通人(默认)
     x-enum-varnames:
-    - Admin
     - GeneralUser
+    - Admin
     - Bot
   v1.ErrorResponse:
     properties:
@@ -341,12 +341,6 @@ paths:
       consumes:
       - application/json
       description: 使用电子邮件和明码进行登录
-      parameters:
-      - description: Bearer {token}
-        in: header
-        name: Authorization
-        required: true
-        type: string
       produces:
       - application/json
       responses:
@@ -402,7 +396,7 @@ paths:
       summary: 用户登出
       tags:
       - user
-  /v1/me:
+  /v1/me/info:
     get:
       consumes:
       - application/json
@@ -612,7 +606,39 @@ paths:
       consumes:
       - application/json
       description: 使用电子邮件进行注册
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/v1.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/v1.ErrorResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/v1.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/v1.ErrorResponse'
+      summary: 用户注册
+      tags:
+      - user
+  /v1/ws:
+    get:
+      consumes:
+      - application/json
+      description: 通过建立websocket协议进行用户间通信 收发消息
       parameters:
+      - description: ID
+        in: path
+        name: user_id
+        required: true
+        type: string
       - description: Bearer {token}
         in: header
         name: Authorization
@@ -637,7 +663,7 @@ paths:
           description: Not Found
           schema:
             $ref: '#/definitions/v1.ErrorResponse'
-      summary: 用户注册
+      summary: 用户通信
       tags:
-      - user
+      - ws
 swagger: "2.0"
