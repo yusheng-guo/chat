@@ -5,6 +5,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/yushengguo557/chat/internal/service"
+	"github.com/yushengguo557/chat/utils"
 )
 
 // @Summary 用户注册
@@ -12,7 +13,6 @@ import (
 // @Tags user
 // @Accept json
 // @Produce json
-// @Param Authorization header string true "Bearer {token}"
 // @Success 200 {object} Response
 // @Failure 400 {object} ErrorResponse
 // @Failure 401 {object} ErrorResponse
@@ -34,21 +34,33 @@ func Register(c *gin.Context) {
 // @Tags user
 // @Accept json
 // @Produce json
-// @Param Authorization header string true "Bearer {token}"
 // @Success 200 {object} Response
 // @Failure 400 {object} ErrorResponse
 // @Failure 401 {object} ErrorResponse
 // @Failure 404 {object} ErrorResponse
 // @Router /v1/login [post]
 func Login(c *gin.Context) {
+	// 1.登录参数
 	param := &service.LoginRequest{}
 	svc := service.NewService(c.Request.Context())
 	if err := c.Bind(param); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
-	ret := svc.Login(param)
-	c.JSON(ret.Code, gin.H{"message": ret.Message})
+	// 2.携带参数进行登录
+	u, err := svc.Login(param)
+	if err != nil { // 登录失败
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+	}
+	// 3.生成Token
+	var token string
+	token, err = utils.GenerateToken(u.ID)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+	}
+	c.JSON(http.StatusOK, gin.H{"token": token})
 }
 
 // @Summary 用户登出

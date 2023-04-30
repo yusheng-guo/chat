@@ -7,6 +7,7 @@ import (
 	v1 "github.com/yushengguo557/chat/api/v1"
 	"github.com/yushengguo557/chat/docs"
 	"github.com/yushengguo557/chat/global"
+	"github.com/yushengguo557/chat/internal/middleware"
 )
 
 func NewRouter() *gin.Engine {
@@ -38,7 +39,7 @@ func NewRouter() *gin.Engine {
 		apiv1.PUT("/message/:id", v1.UpdateMessage)
 		apiv1.GET("/message", v1.ReceiveMessage)
 
-		apiv1.GET("/ws", v1.HandleWebSocket)
+		apiv1.GET("/ws", middleware.JWTAuthMiddleware(), v1.HandleWebSocket)
 	}
 	return r
 }

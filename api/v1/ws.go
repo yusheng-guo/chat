@@ -1,6 +1,7 @@
 package v1
 
 import (
+	"fmt"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -22,17 +23,22 @@ import (
 // @Failure 404 {object} ErrorResponse
 // @Router /v1/ws [get]
 func HandleWebSocket(c *gin.Context) {
-	// 1.升级为 websocket 连接
+	// 1.从 Context 中获取 用户id
+	id := c.GetString("id")
+	fmt.Println("---id:", id, "---")
+	// 2..升级为 websocket 连接
 	conn, _, _, err := ws.UpgradeHTTP(c.Request, c.Writer)
 	if err != nil {
 		global.Logger.Warn("upgrading http to websocket: %w", err)
 		c.JSON(http.StatusUpgradeRequired, gin.H{"message": "conn't upgrade http to websocket."})
 	}
-
-	// 2.关闭连接
+	// 3..关闭连接
 	defer conn.Close()
 
-	// 3.创建服务 进行通信
+	// 4..将连接加入到全局变量OnlineUsers中
+	global.OnlineUsers[id] = conn
+
+	// 5.创建服务 进行通信
 	svc := service.NewService(c.Request.Context())
 	go svc.Communicate(conn)
 }

@@ -76,38 +76,24 @@ func (s *Service) Register(r *RegisterRequest) *RegisterResponse {
 }
 
 // Login 用户登录
-func (s Service) Login(re *LoginRequest) *LoginResponse {
+func (s Service) Login(re *LoginRequest) (*model.User, error) {
 	// 1.该用户是否存在
 	u, _ := s.dao.FindUserByEmail(re.Email)
 	if u == nil {
-		return &LoginResponse{
-			Code:    http.StatusUnauthorized,
-			Message: "User does not exist.",
-		}
+		return nil, fmt.Errorf("user does not exist")
 	}
 
 	// 2.密码是否正确
 	if u.Password != re.Password {
-		return &LoginResponse{
-			Code:    http.StatusUnauthorized,
-			Message: "Password error.",
-		}
+		return nil, fmt.Errorf("password error")
 	}
-	// 3.新建在线用户
+
+	// 3.新建在线用户 并添加到redis在线用户数据库中
 	onlineuser := model.NewOnlineUser(u.ID)
-
-	// 4.加入到在线用户redis数据库中
 	if err := s.dao.AddOnlineUser(onlineuser); err != nil {
-		global.Logger.Warn("adding onlineuser to redis in `Login Function`: %w", err)
-		return &LoginResponse{
-			Code:    http.StatusInternalServerError,
-			Message: "Try again later.",
-		}
+		return nil, fmt.Errorf("adding onlineuser to redis in `Login Function`: %w", err)
 	}
 
-	// 5.响应
-	return &LoginResponse{
-		Code:    http.StatusOK,
-		Message: "Login successful!",
-	}
+	// 4.返回用户结构体
+	return u, nil
 }
