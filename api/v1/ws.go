@@ -2,6 +2,7 @@ package v1
 
 import (
 	"fmt"
+	"log"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -32,13 +33,19 @@ func HandleWebSocket(c *gin.Context) {
 		global.Logger.Warn("upgrading http to websocket: %w", err)
 		c.JSON(http.StatusUpgradeRequired, gin.H{"message": "conn't upgrade http to websocket."})
 	}
+	fmt.Println("连接成功")
 	// 3..关闭连接
-	defer conn.Close()
+	// defer conn.Close()
 
 	// 4..将连接加入到全局变量OnlineUsers中
 	global.OnlineUsers[id] = conn
+	fmt.Println("添加在线用户")
+	fmt.Println(conn.RemoteAddr().String())
 
 	// 5.创建服务 进行通信
 	svc := service.NewService(c.Request.Context())
-	go svc.Communicate(conn)
+	go func() {
+		err := svc.Communicate(conn)
+		log.Panicln(err)
+	}()
 }

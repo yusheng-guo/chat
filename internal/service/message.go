@@ -8,6 +8,7 @@ import (
 
 	"github.com/gobwas/ws"
 	"github.com/gobwas/ws/wsutil"
+	"github.com/yushengguo557/chat/global"
 	"github.com/yushengguo557/chat/internal/model"
 )
 
@@ -96,37 +97,42 @@ func (s *Service) Communicate(conn net.Conn) error {
 		// 2.准备从 r中读取下一条消息
 		hdr, err := r.NextFrame()
 		if err != nil {
-			return err
+			return fmt.Errorf("get next frame: %w", err)
 		}
 		if hdr.OpCode == ws.OpClose {
-			return io.EOF
+			return fmt.Errorf("end of file: %w", io.EOF)
 		}
 		// 3.解码消息
 		var msg model.Message
 		if err = decoder.Decode(&msg); err != nil {
-			return err
+			return fmt.Errorf("decode message in `Communicate Function`: %w", err)
 		}
 
 		// 4.将消息存储到rethinkdb数据库
 		err = s.dao.InsertMessage(&msg)
 		if err != nil {
-			return fmt.Errorf("inserting message to rethinkdb in `SendMessage Function`: %w", err)
+			return fmt.Errorf("inserting message to rethinkdb in `Communicate Function`: %w", err)
 		}
 
 		// 5.从redis中获取接收者
-		receiver, err := s.dao.GetOnlineUser(msg.Receiver)
-		if err != nil {
-			return err
+		// receiver, err := s.dao.GetOnlineUser(msg.Receiver)
+		// if err != nil {
+		// 	return fmt.Errorf("receiver not exists")
+		// }
+		// 从全局变量OnlineUser中获取接收者
+		receiver, ok := global.OnlineUsers[msg.Receiver]
+		if !ok {
+			return fmt.Errorf("receiver not exists")
 		}
 
 		// 6.消息转发
-		w := wsutil.NewWriter(receiver.Conn, ws.StateServerSide, ws.OpText)
+		w := wsutil.NewWriter(receiver, ws.StateServerSide, ws.OpText)
 		encoder := json.NewEncoder(w)
 		if err := encoder.Encode(&msg); err != nil {
-			return err
+			return fmt.Errorf("encode message in `Communicate Function`: %w", err)
 		}
 		if err = w.Flush(); err != nil {
-			return err
+			return fmt.Errorf("flush to writer in `Communicate Function`: %w", err)
 		}
 	}
 }
