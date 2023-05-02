@@ -9,6 +9,35 @@ import (
 	"github.com/yushengguo557/chat/internal/model"
 )
 
+// TestInsertUser 测试 消息 增删改查
+// {0xc000412c00 e80c0552-3027-414c-b208-4031fe730f3d 5547abe4-386e-45c0-af0a-ad9cc9b82e59 hi 0 0}
+func TestInsertMessage(t *testing.T) {
+	msg := model.NewMessage("e80c0552-3027-414c-b208-4031fe730f3d", "5547abe4-386e-45c0-af0a-ad9cc9b82e59", "test", model.MessageTypeText)
+	global.InitDB() // 初始化数据库
+	d := NewDao(global.Session, global.RedisClient)
+
+	// C
+	err := d.InsertMessage(msg)
+	if err != nil {
+		log.Panic(err)
+	}
+	log.Println("消息插入")
+
+	// U
+	err = d.UpdatemessageByID("c6c3c4c3-d2f6-4910-8fac-6d52150dced7", map[string]any{"content": "hi!😏"})
+	if err != nil {
+		log.Panic(err)
+	}
+	log.Println("消息更新")
+
+	// D
+	err = d.DeleteMessageByID(msg.ID)
+	if err != nil {
+		log.Panic(err)
+	}
+	log.Println("消息删除")
+}
+
 // TestInsertUser 测试 rethinkdb 数据库
 func TestInsertUser(t *testing.T) {
 	u := model.NewUser()

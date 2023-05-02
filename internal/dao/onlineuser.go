@@ -9,6 +9,7 @@ import (
 
 var ctx = context.Background()
 
+// ------------------------------------- 增加 -------------------------------------
 // AddOnlineUser 添加在线用户
 func (d *Dao) AddOnlineUser(user *model.OnlineUser) (err error) {
 	// 1.序列化用户
@@ -24,6 +25,7 @@ func (d *Dao) AddOnlineUser(user *model.OnlineUser) (err error) {
 	return nil
 }
 
+// ------------------------------------- 删除 -------------------------------------
 // RemoveOnlineUser 移除在线用户
 func (d *Dao) RemoveOnlineUser(id string) (err error) {
 	// 1.找到用户 关闭 websocket 连接
@@ -41,6 +43,7 @@ func (d *Dao) RemoveOnlineUser(id string) (err error) {
 	return nil
 }
 
+// ------------------------------------- 查询 -------------------------------------
 func (d *Dao) GetOnlineUser(id string) (*model.OnlineUser, error) {
 	// 1.从redis中获取
 	serialized, err := d.Client.HGet(ctx, "online_users", id).Result()
@@ -54,6 +57,7 @@ func (d *Dao) GetOnlineUser(id string) (*model.OnlineUser, error) {
 	return &user, nil
 }
 
+// ------------------------------------- 其他 -------------------------------------
 // IsOnline 用户是否在线
 func (d *Dao) IsOnline(id string) bool {
 	return d.Client.HExists(ctx, "online_users", id).Val()
