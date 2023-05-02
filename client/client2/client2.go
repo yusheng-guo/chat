@@ -57,7 +57,8 @@ type Message struct {
 
 func main() {
 	// 连接WebSocket服务器
-	token := "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU1NDdhYmU0LTM4NmUtNDVjMC1hZjBhLWFkOWNjOWI4MmU1OSJ9.01bbtcIqN5tSvnPCZ9Y_dPiuaq7qIWBILvRaZrCFWAY"
+	// token := "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU1NDdhYmU0LTM4NmUtNDVjMC1hZjBhLWFkOWNjOWI4MmU1OSJ9.01bbtcIqN5tSvnPCZ9Y_dPiuaq7qIWBILvRaZrCFWAY"
+	token := "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImU4MGMwNTUyLTMwMjctNDE0Yy1iMjA4LTQwMzFmZTczMGYzZCJ9.jl8pyHtchgp6kmaVhv4GP5V-PtIvhzKaBnRbGjIOXuY"
 	header := ws.HandshakeHeaderHTTP{
 		"Upgrade":               []string{"websocket"},
 		"Connection":            []string{"Upgrade"},
@@ -85,7 +86,7 @@ func main() {
 	var msg Message
 	for scanner.Scan() {
 		msg = Message{
-			Sender:   "5547abe4-386e-45c0-af0a-ad9cc9b82e59",
+			Sender:   "e80c0552-3027-414c-b208-4031fe730f3d",
 			Receiver: "5547abe4-386e-45c0-af0a-ad9cc9b82e59",
 			Content:  "hello",
 		}
@@ -106,7 +107,7 @@ func receiveMessages(conn net.Conn) {
 	for {
 		data, op, err := wsutil.ReadServerData(conn)
 		if err != nil {
-			log.Println("read data: %w", err)
+			log.Println("read data: ", err)
 			break
 		}
 		if op == ws.OpClose {
@@ -115,6 +116,6 @@ func receiveMessages(conn net.Conn) {
 		}
 		var msg Message
 		json.Unmarshal(data, &msg)
-		fmt.Printf("receive [%s] from server\n", msg.Content)
+		fmt.Printf("receive [%s] from [%s]\n", msg.Content, msg.Sender)
 	}
 }
