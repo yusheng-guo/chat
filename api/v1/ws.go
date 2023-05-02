@@ -38,7 +38,9 @@ func HandleWebSocket(c *gin.Context) {
 	// defer conn.Close()
 
 	// 4..将连接加入到全局变量OnlineUsers中
+	global.Lock.Lock() // 加锁
 	global.OnlineUsers[id] = conn
+	global.Lock.Unlock()
 	fmt.Println("添加在线用户")
 	fmt.Println(conn.RemoteAddr().String())
 

@@ -113,6 +113,7 @@ func (s *Service) Communicate(conn net.Conn) error {
 		if err != nil {
 			return fmt.Errorf("inserting message to rethinkdb in `Communicate Function`: %w", err)
 		}
+		fmt.Println("消息保存成功", msg)
 
 		// 5.从redis中获取接收者
 		// receiver, err := s.dao.GetOnlineUser(msg.Receiver)
@@ -120,7 +121,9 @@ func (s *Service) Communicate(conn net.Conn) error {
 		// 	return fmt.Errorf("receiver not exists")
 		// }
 		// 从全局变量OnlineUser中获取接收者
+		global.Lock.RLock() // 加锁
 		receiver, ok := global.OnlineUsers[msg.Receiver]
+		global.Lock.RUnlock()
 		if !ok {
 			return fmt.Errorf("receiver not exists")
 		}

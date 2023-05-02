@@ -1,8 +1,8 @@
 # chat
 Chat system developed using Gin and github.com/gobwas/ws!
 
-### Project Design
-##### Build Project Catalog Structure
+## Project Design
+#### Build Project Catalog Structure
 ```shell
 chat
 ├─api    # 接口
@@ -24,18 +24,18 @@ chat
 ├─utils  # 工具函数
 └─vendor # 项目以来的第三方库
 ```
-##### Create Database
+#### Create Database
 - Database: chat
 - Charts: users, messages
 
 
-##### Create Model
+#### Create Model
 - Model
 - User
 - Message
 
 
-##### Routing
+#### Routing
 - 用户管理
 
 | Function | Mathod | Path         | Remark             |
@@ -67,14 +67,21 @@ chat
 | 获取消息     | GET    | /message     |                    |
 
 
-### Public Components
-##### Configuration Management [`viper`](https://github.com/spf13/viper)
+## Public Components
+#### Configuration Management [`viper`](https://github.com/spf13/viper)
     
-##### Database Connection [`rethinkdb`](https://rethinkdb.com/)
+#### Database Connection 
+- [`rethinkdb`](https://rethinkdb.com/)
+- [`Redis`](https://redis.io/)
 
-##### Response Processing 
+#### Response Processing 
 - Response
 - ErrorResponse
 
-### API Documentation [`swagger`](https://swagger.io/)
+## API Documentation [`swagger`](https://swagger.io/)
 ![image](https://github.com/yushengguo557/chat/blob/main/assets/screenshots/swagger.png)
+
+## Function Development
+#### Register and Login 
+
+#### WebSocket Communication 
