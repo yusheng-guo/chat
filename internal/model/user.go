@@ -4,7 +4,7 @@ package model
 import (
 	"time"
 
-	"github.com/google/uuid"
+	"github.com/yushengguo557/chat/utils"
 )
 
 // Define Gender and UserRole
@@ -53,7 +53,7 @@ func NewUser() *User {
 	now := time.Now()
 	return &User{
 		Model: &Model{
-			ID:        uuid.New().String(),
+			ID:        utils.GenerateUuid(),
 			CreatedAt: &now,
 		},
 	}

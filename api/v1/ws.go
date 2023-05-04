@@ -41,8 +41,7 @@ func HandleWebSocket(c *gin.Context) {
 	global.Lock.Lock() // 加锁
 	global.OnlineUsers[id] = conn
 	global.Lock.Unlock()
-	fmt.Println("添加在线用户")
-	fmt.Println(conn.RemoteAddr().String())
+	fmt.Println("添加在线用户: ", conn.RemoteAddr().String())
 
 	// 5.创建服务 进行通信
 	svc := service.NewService(c.Request.Context())

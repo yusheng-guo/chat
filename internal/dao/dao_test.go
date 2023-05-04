@@ -12,7 +12,7 @@ import (
 // TestInsertUser 测试 消息 增删改查
 // {0xc000412c00 e80c0552-3027-414c-b208-4031fe730f3d 5547abe4-386e-45c0-af0a-ad9cc9b82e59 hi 0 0}
 func TestInsertMessage(t *testing.T) {
-	msg := model.NewMessage("e80c0552-3027-414c-b208-4031fe730f3d", "5547abe4-386e-45c0-af0a-ad9cc9b82e59", "test", model.MessageTypeText)
+	msg := model.NewMessage("e80c0552-3027-414c-b208-4031fe730f3d", "5547abe4-386e-45c0-af0a-ad9cc9b82e59", "test")
 	global.InitDB() // 初始化数据库
 	d := NewDao(global.Session, global.RedisClient)
 

@@ -4,8 +4,8 @@ package model
 import (
 	"time"
 
-	"github.com/google/uuid"
 	"github.com/yushengguo557/chat/global"
+	"github.com/yushengguo557/chat/utils"
 )
 
 // MessageStatus 消息状态
@@ -43,9 +43,9 @@ type Message struct {
 }
 
 // 创建消息
-func NewMessage(sender string, receiver string, content string, messageType MessageType) *Message {
+func NewMessage(sender string, receiver string, content string) *Message {
 	// 生成消息 ID
-	id := uuid.New().String()
+	id := utils.GenerateUuid()
 	now := time.Now()
 	// 创建消息并返回
 	return &Message{
@@ -59,8 +59,8 @@ func NewMessage(sender string, receiver string, content string, messageType Mess
 		Sender:   sender,
 		Receiver: receiver,
 		Content:  content,
-		State:    MessageStatusSent,
-		Type:     messageType,
+		State:    MessageStatusSent, // 默认值
+		Type:     MessageTypeText,   // 默认值
 	}
 }
 
