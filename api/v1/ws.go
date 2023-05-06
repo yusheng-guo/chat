@@ -42,11 +42,18 @@ func HandleWebSocket(c *gin.Context) {
 	global.OnlineUsers[id] = conn
 	global.Lock.Unlock()
 	fmt.Println("添加在线用户: ", conn.RemoteAddr().String())
+	// fmt.Println(global.OnlineUsers)
 
+	fmt.Printf("%v", global.OnlineUsers)
 	// 5.创建服务 进行通信
 	svc := service.NewService(c.Request.Context())
 	go func() {
 		err := svc.Communicate(conn)
-		log.Panicln(err)
+		if err != nil {
+			// log.Panicln(err)
+			log.Println(err)
+		}
+		conn.Close()
+		delete(global.OnlineUsers, id)
 	}()
 }

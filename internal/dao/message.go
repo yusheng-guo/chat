@@ -5,17 +5,12 @@ import (
 	"time"
 
 	"github.com/yushengguo557/chat/internal/model"
-	"github.com/yushengguo557/chat/utils"
 	r "gopkg.in/rethinkdb/rethinkdb-go.v6"
 )
 
 // ------------------------------------- 增加 -------------------------------------
 // Insertmessage 增加数据
 func (d *Dao) InsertMessage(msg *model.Message) error {
-	if msg.ID == "" {
-		msg.ID = utils.GenerateUuid()
-	}
-
 	_, err := r.DB("chat").Table("messages").
 		Insert(msg).
 		RunWrite(d.Session)

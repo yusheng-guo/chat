@@ -96,12 +96,14 @@ func (s *Service) Communicate(conn net.Conn) error {
 	for {
 		// 2.准备从 r中读取下一条消息
 		hdr, err := r.NextFrame()
+		if hdr.OpCode == ws.OpClose {
+			fmt.Println("关闭连接")
+			return nil
+		}
 		if err != nil {
 			return fmt.Errorf("get next frame: %w", err)
 		}
-		if hdr.OpCode == ws.OpClose {
-			return fmt.Errorf("end of file: %w", io.EOF)
-		}
+
 		// 3.解码消息
 		var msg model.Message
 		if err = decoder.Decode(&msg); err != nil {
@@ -114,6 +116,8 @@ func (s *Service) Communicate(conn net.Conn) error {
 			return fmt.Errorf("inserting message to rethinkdb in `Communicate Function`: %w", err)
 		}
 		fmt.Println("消息保存成功", msg)
+		fmt.Println("sender: ", msg.Sender)
+		fmt.Println("reciever: ", msg.Receiver)
 
 		// 5.从redis中获取接收者
 		// receiver, err := s.dao.GetOnlineUser(msg.Receiver)
@@ -125,7 +129,8 @@ func (s *Service) Communicate(conn net.Conn) error {
 		receiver, ok := global.OnlineUsers[msg.Receiver]
 		global.Lock.RUnlock()
 		if !ok {
-			return fmt.Errorf("receiver not exists")
+			// return fmt.Errorf("receiver not exists")
+			fmt.Println("receiver not exists")
 		}
 
 		// 6.消息转发

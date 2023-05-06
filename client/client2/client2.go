@@ -8,16 +8,17 @@ import (
 	"log"
 	"net"
 	"os"
+	"time"
 
 	"github.com/gobwas/ws"
 	"github.com/gobwas/ws/wsutil"
+	"github.com/google/uuid"
 	"github.com/yushengguo557/chat/client/message"
 )
 
 func main() {
 	// 连接WebSocket服务器
-	// token := "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU1NDdhYmU0LTM4NmUtNDVjMC1hZjBhLWFkOWNjOWI4MmU1OSJ9.01bbtcIqN5tSvnPCZ9Y_dPiuaq7qIWBILvRaZrCFWAY"
-	token := "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImU4MGMwNTUyLTMwMjctNDE0Yy1iMjA4LTQwMzFmZTczMGYzZCJ9.jl8pyHtchgp6kmaVhv4GP5V-PtIvhzKaBnRbGjIOXuY"
+	token := "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU1NDdhYmU0LTM4NmUtNDVjMC1hZjBhLWFkOWNjOWI4MmU1OSJ9.01bbtcIqN5tSvnPCZ9Y_dPiuaq7qIWBILvRaZrCFWAY"
 	header := ws.HandshakeHeaderHTTP{
 		"Upgrade":               []string{"websocket"},
 		"Connection":            []string{"Upgrade"},
@@ -45,9 +46,15 @@ func main() {
 	var msg message.Message
 	for scanner.Scan() {
 		msg = message.Message{
-			Sender:   "e80c0552-3027-414c-b208-4031fe730f3d",
-			Receiver: "5547abe4-386e-45c0-af0a-ad9cc9b82e59",
+			Sender:   "5547abe4-386e-45c0-af0a-ad9cc9b82e59",
+			Receiver: "e80c0552-3027-414c-b208-4031fe730f3d",
 			Content:  "hello",
+			State:    message.MessageStatusSent,
+			Type:     message.MessageTypeText,
+			Model: &message.Model{
+				ID:        uuid.NewString(),
+				CreatedAt: &time.Time{},
+			},
 		}
 		msg.Content = string(scanner.Bytes())
 		data, err := json.Marshal(msg)

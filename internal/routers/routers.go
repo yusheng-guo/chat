@@ -40,6 +40,9 @@ func NewRouter() *gin.Engine {
 		apiv1.GET("/message", v1.ReceiveMessage)
 
 		apiv1.GET("/ws", middleware.JWTAuthMiddleware(), v1.HandleWebSocket)
+
+		// apiv1.Static("/image", "./upload")
+		apiv1.POST("/upload/image", v1.UploadImage)
 	}
 	return r
 }
