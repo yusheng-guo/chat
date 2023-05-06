@@ -30,7 +30,7 @@ func Upload(c *gin.Context) {}
 // @Produce json
 // @Security ApiKeyAuth
 // @Param file formData file true "上传的图片文件"
-// @Success 200 {string} string "上传成功"
+// @Success 200 {object} UploadResponse "上传成功"
 // @Failure 400 {object} ErrorResponse "请求参数错误"
 // @Failure 401 {object} ErrorResponse "未认证授权"
 // @Failure 500 {object} ErrorResponse "服务器内部错误"
@@ -42,13 +42,15 @@ func UploadImage(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{"msg": "图片上传失败"})
 		return
 	}
-	// 将图片保存到本地
-
+	// 将图片保存到服务器
 	fileSuffix := file.Filename[strings.IndexByte(file.Filename, '.'):]
-	err = c.SaveUploadedFile(file, "upload/image/"+fmt.Sprintf("%d", time.Now().Unix())+fileSuffix)
+	filename := fmt.Sprintf("%d", time.Now().Unix()) + fileSuffix
+	filepath := "storage/image/" + filename
+	err = c.SaveUploadedFile(file, filepath)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"msg": "图片保存失败"})
 		return
 	}
-	c.JSON(http.StatusOK, gin.H{"msg": "图片上传成功"})
+
+	c.JSON(http.StatusOK, gin.H{"msg": c.Request.Host + "/image/" + filename})
 }

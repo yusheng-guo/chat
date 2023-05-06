@@ -1,6 +1,8 @@
 package routers
 
 import (
+	"net/http"
+
 	"github.com/gin-gonic/gin"
 	swaggerfiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
@@ -19,6 +21,10 @@ func NewRouter() *gin.Engine {
 	docs.SwaggerInfo.BasePath = "http://localhost:8080/"
 	r.GET("/docs/*any", ginSwagger.WrapHandler(swaggerfiles.Handler))
 	// http://127.0.0.1:8080/docs/index.html
+
+	// apiv1.Static("/image", "./upload")
+	r.POST("/upload/image", v1.UploadImage)
+	r.StaticFS("/image", http.Dir("storage/image"))
 	apiv1 := r.Group("/v1") // 路由组
 	{
 		apiv1.POST("/register", v1.Register)
@@ -41,8 +47,6 @@ func NewRouter() *gin.Engine {
 
 		apiv1.GET("/ws", middleware.JWTAuthMiddleware(), v1.HandleWebSocket)
 
-		// apiv1.Static("/image", "./upload")
-		apiv1.POST("/upload/image", v1.UploadImage)
 	}
 	return r
 }

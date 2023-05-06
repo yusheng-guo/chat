@@ -429,3 +429,10 @@
 {"level":"info","msg":"Database and tables created!","time":"2023-05-06T23:53:09+08:00"}
 {"level":"info","msg":"Configuration file is loaded!","time":"2023-05-06T23:53:09+08:00"}
 {"level":"info","msg":"[GIN] 2023/05/06 - 23:53:28 | 200 |      2.6429ms |       127.0.0.1 | POST     \"/v1/upload/image\"","time":"2023-05-06T23:53:28+08:00"}
+{"level":"info","msg":"Database and tables created!","time":"2023-05-07T00:25:52+08:00"}
+{"level":"info","msg":"Configuration file is loaded!","time":"2023-05-07T00:25:52+08:00"}
+{"level":"info","msg":"[GIN] 2023/05/07 - 00:26:03 | 404 |            0s |       127.0.0.1 | POST     \"/v1/upload/image\"","time":"2023-05-07T00:26:03+08:00"}
+{"level":"info","msg":"[GIN] 2023/05/07 - 00:26:16 | 200 |      4.5277ms |       127.0.0.1 | POST     \"/upload/image\"","time":"2023-05-07T00:26:16+08:00"}
+{"level":"info","msg":"[GIN] 2023/05/07 - 00:26:26 | 200 |    101.4406ms |       127.0.0.1 | GET      \"/image/1683390376.jpg\"","time":"2023-05-07T00:26:26+08:00"}
+{"level":"info","msg":"[GIN] 2023/05/07 - 00:26:42 | 200 |       517.6µs |       127.0.0.1 | GET      \"/image/1683390376.jpg\"","time":"2023-05-07T00:26:42+08:00"}
+{"level":"info","msg":"[GIN] 2023/05/07 - 00:26:42 | 404 |            0s |       127.0.0.1 | GET      \"/favicon.ico\"","time":"2023-05-07T00:26:42+08:00"}
