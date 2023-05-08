@@ -14,25 +14,55 @@ import (
 type FileType int
 
 const (
-	TypeImage    FileType = iota + 1 // 图片
-	TypeMarkDown                     // markdown
+	Image    FileType = iota + 1 // 图片
+	Video                        // 视频
+	Audio                        // 音频
+	Document                     // 文档
+	Text                         // 文本
+	Other                        // 其他
 )
 
-// GetFileType 获取文件类型
+// String 将整形转为 字符串
 func (t FileType) String() string {
 	switch t {
-	case TypeImage:
+	case Image:
 		return "image"
-	case TypeMarkDown:
-		return "markdown"
+	case Video:
+		return "video"
+	case Audio:
+		return "audio"
+	case Document:
+		return "document"
+	case Text:
+		return "text"
+	default:
+		return "other"
 	}
-	return ""
+}
+
+// func 获取文件类型
+func GetFileType(name string) FileType {
+	ext := path.Ext(name)
+	switch ext {
+	case ".jpg", ".jpeg", ".png", ".gif":
+		return Image
+	case ".mp4", ".avi", ".mov", ".wmv":
+		return Video
+	case ".mp3", ".wav", ".ogg", ".flac":
+		return Audio
+	case ".doc", ".docx", ".xls", ".xlsx", ".ppt", ".pptx", ".pdf", ".md":
+		return Document
+	case ".txt", ".go", ".c", ".rs", ".js":
+		return Text
+	default:
+		return Other
+	}
 }
 
 // RenameFileByUnix 通过 时间戳 重命名文件
 func RenameFileByUnix(name string) string {
-	fileSuffix := path.Ext(name)
-	return fmt.Sprintf("%d%s", time.Now().UnixNano(), fileSuffix)
+	ext := path.Ext(name)
+	return fmt.Sprintf("%d%s", time.Now().UnixNano(), ext)
 }
 
 // RenameFileByMD5 通过 md5 加密算法重命名文件

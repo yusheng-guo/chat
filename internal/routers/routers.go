@@ -22,9 +22,8 @@ func NewRouter() *gin.Engine {
 	r.GET("/docs/*any", ginSwagger.WrapHandler(swaggerfiles.Handler))
 	// http://127.0.0.1:8080/docs/index.html
 
-	// apiv1.Static("/image", "./upload")
-	r.POST("/upload/image", v1.UploadImage)
-	r.StaticFS("/image", http.Dir("storage/image"))
+	r.POST("/upload", v1.Upload)
+	r.StaticFS("storage", http.Dir("storage"))
 	apiv1 := r.Group("/v1") // 路由组
 	{
 		apiv1.POST("/register", v1.Register)

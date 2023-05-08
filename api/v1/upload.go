@@ -6,52 +6,38 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/yushengguo557/chat/api/common"
 	"github.com/yushengguo557/chat/internal/service"
-	"github.com/yushengguo557/chat/internal/upload"
 )
 
-// @Summary 文件上传
-// @Description 文件上传
-// @Tags upload
-// @Accept json
-// @Produce json
-// @Param user_id path string true "ID"
-// @Param Authorization header string true "Bearer {token}"
-// @Success 200 {object} Response
-// @Failure 400 {object} ErrorResponse
-// @Failure 401 {object} ErrorResponse
-// @Failure 404 {object} ErrorResponse
-// @Router /v1/ws [post]
-func Upload(c *gin.Context) {}
-
 // UploadImage godoc
-// @Summary 上传图片
-// @Description 上传图片到服务器
+// @Summary 上传文件
+// @Description 上传文件
 // @Accept multipart/form-data
 // @Produce json
 // @Security ApiKeyAuth
-// @Param file formData file true "上传的图片文件"
+// @Param file formData file true "上传的文件"
 // @Success 200 {object} UploadResponse "上传成功"
 // @Failure 400 {object} ErrorResponse "请求参数错误"
 // @Failure 401 {object} ErrorResponse "未认证授权"
 // @Failure 500 {object} ErrorResponse "服务器内部错误"
-// @Router /v1/upload/image [post]
-func UploadImage(c *gin.Context) {
-	// 获取文件
+// @Router /upload [post]
+func Upload(c *gin.Context) {
+	// 1.获取文件
 	fileHeader, err := c.FormFile("file")
 	if err != nil {
-		rsp := common.NewResponse(common.BadRequest, "图片上传失败")
+		rsp := common.NewResponse(common.BadRequest, "文件上传失败")
 		c.JSON(http.StatusBadRequest, rsp)
 		return
 	}
-	// 将图片保存到服务器
+	// 2.将文件保存到服务器
 	svc := service.NewService(c.Request.Context())
-	info, err := svc.UploadFile(fileHeader, upload.TypeImage)
+	info, err := svc.UploadFile(fileHeader)
 	if err != nil {
-		rsp := common.NewResponse(common.FileSavingErr, "图片保存失败")
+		rsp := common.NewResponse(common.FileSavingErr, "文件保存失败")
 		c.JSON(http.StatusInternalServerError, rsp)
 		return
 	}
-	rsp := common.NewResponse(common.FileSavingErr, info.AccessUrl)
+	// 3.响应 可访问地址
+	rsp := common.NewResponse(common.OK, info.AccessUrl)
 	c.JSON(http.StatusOK, rsp)
 }
 
