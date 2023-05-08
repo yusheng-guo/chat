@@ -32,6 +32,13 @@ func NewConfig() (cfg *Config, err error) {
 		DBName:   "chat",
 		Timeout:  5,
 	})
+
+	cfg.SetDefault("Storage", &StorageS{
+		SavePath:       "storage/",
+		ServerUrl:      "http://127.0.0.1:8080/",
+		ImageAllowExts: []string{".jpg", ".jpeg", ".png", ".gif"},
+	})
+
 	// 设置默认配置信息
 	// cfg.SetDefault("Server.RunMode", "debug")
 	// cfg.SetDefault("Server.port", "8080")

@@ -1,12 +1,12 @@
 package v1
 
 import (
-	"fmt"
 	"net/http"
-	"strings"
-	"time"
 
 	"github.com/gin-gonic/gin"
+	"github.com/yushengguo557/chat/api/common"
+	"github.com/yushengguo557/chat/internal/service"
+	"github.com/yushengguo557/chat/internal/upload"
 )
 
 // @Summary 文件上传
@@ -37,20 +37,39 @@ func Upload(c *gin.Context) {}
 // @Router /v1/upload/image [post]
 func UploadImage(c *gin.Context) {
 	// 获取文件
-	file, err := c.FormFile("file")
+	fileHeader, err := c.FormFile("file")
 	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"msg": "图片上传失败"})
+		rsp := common.NewResponse(common.BadRequest, "图片上传失败")
+		c.JSON(http.StatusBadRequest, rsp)
 		return
 	}
 	// 将图片保存到服务器
-	fileSuffix := file.Filename[strings.IndexByte(file.Filename, '.'):]
-	filename := fmt.Sprintf("%d", time.Now().Unix()) + fileSuffix
-	filepath := "storage/image/" + filename
-	err = c.SaveUploadedFile(file, filepath)
+	svc := service.NewService(c.Request.Context())
+	info, err := svc.UploadFile(fileHeader, upload.TypeImage)
 	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"msg": "图片保存失败"})
+		rsp := common.NewResponse(common.FileSavingErr, "图片保存失败")
+		c.JSON(http.StatusInternalServerError, rsp)
 		return
 	}
-
-	c.JSON(http.StatusOK, gin.H{"msg": c.Request.Host + "/image/" + filename})
+	rsp := common.NewResponse(common.FileSavingErr, info.AccessUrl)
+	c.JSON(http.StatusOK, rsp)
 }
+
+// func UploadImage(c *gin.Context) {
+// 	// 获取文件
+// 	file, err := c.FormFile("file")
+// 	if err != nil {
+// 		c.JSON(http.StatusBadRequest, gin.H{"msg": "图片上传失败"})
+// 		return
+// 	}
+// 	// 将图片保存到服务器
+// 	fileSuffix := file.Filename[strings.IndexByte(file.Filename, '.'):]
+// 	filename := fmt.Sprintf("%d", time.Now().Unix()) + fileSuffix
+// 	filepath := "storage/image/" + filename
+// 	err = c.SaveUploadedFile(file, filepath)
+// 	if err != nil {
+// 		c.JSON(http.StatusInternalServerError, gin.H{"msg": "图片保存失败"})
+// 		return
+// 	}
+// 	c.JSON(http.StatusOK, gin.H{"msg": c.Request.Host + "/image/" + filename})
+// }

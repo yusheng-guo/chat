@@ -3,7 +3,7 @@ package config
 
 import "time"
 
-// 数据库配置信息
+// DBConfigS 数据库配置信息
 type DBConfigS struct {
 	DBtype   string        `mapstructure:"dbtype"`
 	Username string        `mapstructure:"username"`
@@ -13,10 +13,17 @@ type DBConfigS struct {
 	Timeout  time.Duration `mapstructure:"timeout"`
 }
 
-// 服务器配置信息
+// ServerConfigS 服务器配置信息
 type ServerConfigS struct {
 	RunMode      string        `mapstructure:"runmode"`
 	Port         string        `mapstructure:"port"`
 	ReadTimeOut  time.Duration `mapstructure:"read_timeout"`
 	WriteTimeOut time.Duration `mapstructure:"write_timeout"`
+}
+
+// Storage 存储配置
+type StorageS struct {
+	SavePath       string
+	ServerUrl      string
+	ImageAllowExts []string
 }

@@ -12,3 +12,12 @@ Database:
   Host: 119.91.204.226:32769
   DBName: chat
   Timeout: 5
+
+Storage:
+  SavePath: storage/ # 文件保存位置
+  ServerUrl: http://127.0.0.1:8080/ # 静态资源服务器地址 
+  ImageAllowExts: # 上传图片所允许的扩展名
+    - .jpg
+    - .jpeg
+    - .png
+    - .gif

@@ -10,6 +10,7 @@ import (
 var (
 	DBConfig     *config.DBConfigS     // 数据库配置
 	ServerConfig *config.ServerConfigS // 服务器配置
+	Storage      *config.StorageS      // 存储
 )
 
 // InitConfig 建立配置 对全局变量进行赋值
@@ -26,6 +27,10 @@ func InitConfig() (err error) {
 	err = cfg.ReadSection("Database", &DBConfig)
 	if err != nil {
 		return fmt.Errorf("reading section to global var DBConfig: %w", err)
+	}
+	err = cfg.ReadSection("Storage", &Storage)
+	if err != nil {
+		return fmt.Errorf("reading section to global var Storage: %w", err)
 	}
 	return
 }
