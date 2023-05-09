@@ -73,3 +73,39 @@ func (message *Message) Marshal() ([]byte, error) {
 func (message *Message) Unmarshal(data []byte) error {
 	return global.Json.Unmarshal(data, &message)
 }
+
+// -------------------------------------------------------------------------------
+// TransferredMessage 用于 传输 的 消息
+type TransferredMessage struct {
+	ID        string         `json:"id"`         // 消息id
+	Sender    string         `json:"sender"`     // 发送者
+	Receiver  string         `json:"receiver"`   // 接收者
+	Content   string         `json:"content"`    // 消息内容
+	State     MessageStatus  `json:"state"`      // 消息状态
+	Type      MessageType    `json:"type"`       // 消息类型
+	CreatedAt *time.Duration `json:"created_at"` // 创建时间
+
+}
+
+// 创建消息
+func NewTransferredMessage(sender string, receiver string, content string) *TransferredMessage {
+	id := utils.GenerateUuid()
+	return &TransferredMessage{
+		ID:       id,
+		Sender:   sender,
+		Receiver: receiver,
+		Content:  content,
+		State:    MessageStatusSent, // 默认值
+		Type:     MessageTypeText,   // 默认值
+	}
+}
+
+// Message({
+//     required this.id,
+//     required this.sender,
+//     required this.receiver,
+//     required this.content,
+//     required this.createdAt,
+//     this.state = MessageStatus.messageStatusSent,
+//     this.type = MessageType.messageTypeText,
+//   });
