@@ -50,11 +50,11 @@ type User struct {
 
 // NewUser 实例化User
 func NewUser() *User {
-	now := time.Now()
+	now := int(time.Now().UnixMilli())
 	return &User{
 		Model: &Model{
 			ID:        utils.GenerateUuid(),
-			CreatedAt: &now,
+			CreatedAt: now,
 		},
 	}
 }

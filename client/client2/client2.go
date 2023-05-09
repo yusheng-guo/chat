@@ -12,8 +12,8 @@ import (
 
 	"github.com/gobwas/ws"
 	"github.com/gobwas/ws/wsutil"
-	"github.com/google/uuid"
 	"github.com/yushengguo557/chat/client/message"
+	"github.com/yushengguo557/chat/utils"
 )
 
 func main() {
@@ -46,15 +46,13 @@ func main() {
 	var msg message.Message
 	for scanner.Scan() {
 		msg = message.Message{
-			Sender:   "5547abe4-386e-45c0-af0a-ad9cc9b82e59",
-			Receiver: "e80c0552-3027-414c-b208-4031fe730f3d",
-			Content:  "hello",
-			State:    message.MessageStatusSent,
-			Type:     message.MessageTypeText,
-			Model: &message.Model{
-				ID:        uuid.NewString(),
-				CreatedAt: &time.Time{},
-			},
+			Sender:    "5547abe4-386e-45c0-af0a-ad9cc9b82e59",
+			Receiver:  "e80c0552-3027-414c-b208-4031fe730f3d",
+			Content:   "hello",
+			State:     message.MessageStatusSent,
+			Type:      message.MessageTypeText,
+			ID:        utils.GenerateUuid(),
+			CreatedAt: int(time.Now().UnixMilli()),
 		}
 		msg.Content = string(scanner.Bytes())
 		data, err := json.Marshal(msg)

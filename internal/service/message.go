@@ -105,19 +105,25 @@ func (s *Service) Communicate(conn net.Conn) error {
 		}
 
 		// 3.解码消息
-		var msg model.Message
-		if err = decoder.Decode(&msg); err != nil {
-			return fmt.Errorf("decode message in `Communicate Function`: %w", err)
+		// var msg model.Message                 // 用于 存储 的消息
+		var transmsg model.TransferredMessage // 用户 传输 的消息
+		// if err = decoder.Decode(&msg); err != nil {
+		// 	return fmt.Errorf("decode message in `Communicate Function`: %w", err)
+		// }
+		// fmt.Println(msg)
+		if err = decoder.Decode(&transmsg); err != nil {
+			return fmt.Errorf("decode transferred message in `Communicate Function`: %w", err)
 		}
+		fmt.Println("transmsg", transmsg)
 
 		// 4.将消息存储到rethinkdb数据库
-		err = s.dao.InsertMessage(&msg)
-		if err != nil {
-			return fmt.Errorf("inserting message to rethinkdb in `Communicate Function`: %w", err)
-		}
-		fmt.Println("消息保存成功", msg)
-		fmt.Println("sender: ", msg.Sender)
-		fmt.Println("reciever: ", msg.Receiver)
+		// err = s.dao.InsertMessage(&msg)
+		// if err != nil {
+		// 	return fmt.Errorf("inserting message to rethinkdb in `Communicate Function`: %w", err)
+		// }
+		// fmt.Println("消息保存成功", msg)
+		// fmt.Println("sender: ", msg.Sender)
+		// fmt.Println("reciever: ", msg.Receiver)
 
 		// 5.从redis中获取接收者
 		// receiver, err := s.dao.GetOnlineUser(msg.Receiver)
@@ -126,7 +132,7 @@ func (s *Service) Communicate(conn net.Conn) error {
 		// }
 		// 从全局变量OnlineUser中获取接收者
 		global.Lock.RLock() // 加锁
-		receiver, ok := global.OnlineUsers[msg.Receiver]
+		receiver, ok := global.OnlineUsers[transmsg.Receiver]
 		global.Lock.RUnlock()
 		if !ok {
 			// return fmt.Errorf("receiver not exists")
@@ -136,7 +142,7 @@ func (s *Service) Communicate(conn net.Conn) error {
 		// 6.消息转发
 		w := wsutil.NewWriter(receiver, ws.StateServerSide, ws.OpText)
 		encoder := json.NewEncoder(w)
-		if err := encoder.Encode(&msg); err != nil {
+		if err := encoder.Encode(&transmsg); err != nil {
 			return fmt.Errorf("encode message in `Communicate Function`: %w", err)
 		}
 		if err = w.Flush(); err != nil {

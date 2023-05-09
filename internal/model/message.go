@@ -46,14 +46,14 @@ type Message struct {
 func NewMessage(sender string, receiver string, content string) *Message {
 	// 生成消息 ID
 	id := utils.GenerateUuid()
-	now := time.Now()
+	now := int(time.Now().UnixMilli())
 	// 创建消息并返回
 	return &Message{
 		Model: &Model{
 			ID:        id,
-			CreatedAt: &now,
-			UpdatedAt: nil,
-			DeletedAt: nil,
+			CreatedAt: now,
+			UpdatedAt: 0,
+			DeletedAt: 0,
 			IsDel:     false,
 		},
 		Sender:   sender,
@@ -77,35 +77,27 @@ func (message *Message) Unmarshal(data []byte) error {
 // -------------------------------------------------------------------------------
 // TransferredMessage 用于 传输 的 消息
 type TransferredMessage struct {
-	ID        string         `json:"id"`         // 消息id
-	Sender    string         `json:"sender"`     // 发送者
-	Receiver  string         `json:"receiver"`   // 接收者
-	Content   string         `json:"content"`    // 消息内容
-	State     MessageStatus  `json:"state"`      // 消息状态
-	Type      MessageType    `json:"type"`       // 消息类型
-	CreatedAt *time.Duration `json:"created_at"` // 创建时间
-
+	ID       string        `json:"id"`       // 消息id
+	Sender   string        `json:"sender"`   // 发送者
+	Receiver string        `json:"receiver"` // 接收者
+	Content  string        `json:"content"`  // 消息内容
+	State    MessageStatus `json:"state"`    // 消息状态
+	Type     MessageType   `json:"type"`     // 消息类型
+	// CreatedAt *time.Time    `json:"created_at"` // 创建时间
+	CreatedAt int `json:"created_at"` // 创建时间
 }
 
 // 创建消息
 func NewTransferredMessage(sender string, receiver string, content string) *TransferredMessage {
 	id := utils.GenerateUuid()
+	now := int(time.Now().UnixMilli())
 	return &TransferredMessage{
-		ID:       id,
-		Sender:   sender,
-		Receiver: receiver,
-		Content:  content,
-		State:    MessageStatusSent, // 默认值
-		Type:     MessageTypeText,   // 默认值
+		ID:        id,
+		Sender:    sender,
+		Receiver:  receiver,
+		Content:   content,
+		State:     MessageStatusSent, // 默认值
+		Type:      MessageTypeText,   // 默认值
+		CreatedAt: now,
 	}
 }
-
-// Message({
-//     required this.id,
-//     required this.sender,
-//     required this.receiver,
-//     required this.content,
-//     required this.createdAt,
-//     this.state = MessageStatus.messageStatusSent,
-//     this.type = MessageType.messageTypeText,
-//   });
