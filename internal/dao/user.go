@@ -2,6 +2,7 @@ package dao
 
 import (
 	"fmt"
+	"log"
 	"time"
 
 	"github.com/yushengguo557/chat/internal/model"
@@ -100,4 +101,19 @@ func (d *Dao) FindUserByEmail(email string) (*model.User, error) {
 		return nil, fmt.Errorf("get a user from the found by email: %w", err)
 	}
 	return user, nil
+}
+
+// IsExist 判断用户是否存在
+func (d *Dao) IstUserExis(uid string) bool {
+	res, err := r.DB("chat").Table("users").
+		Get(uid).
+		Run(d.Session)
+	if err != nil {
+		log.Panic(fmt.Errorf("find user by user ID: %w", err))
+		return false
+	}
+	if res.IsNil() {
+		return false
+	}
+	return true
 }

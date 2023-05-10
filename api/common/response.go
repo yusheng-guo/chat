@@ -6,6 +6,7 @@ const (
 	OK ResponseCode = iota
 	BadRequest
 	FileSavingErr
+	InternalServerError
 )
 
 // 响应数据

@@ -33,11 +33,11 @@ func NewRouter() *gin.Engine {
 		apiv1.PUT("/me", v1.UpdateMyInfo)
 		apiv1.GET("/me", v1.GetMyInfo)
 
-		apiv1.GET("/friends", v1.GetMyFriends)
-		apiv1.POST("/friend/:id", v1.AddFriend)
-		apiv1.DELETE("/friend/:id", v1.DeleteFriend)
-		apiv1.PUT("/friend/:id", v1.UpdateFriendInfo)
-		apiv1.GET("/friend/:id", v1.GetFriendInfo)
+		apiv1.GET("/friends", middleware.JWTAuthMiddleware(), v1.GetMyFriends)
+		apiv1.POST("/friend", middleware.JWTAuthMiddleware(), v1.AddFriend)
+		apiv1.DELETE("/friend/:id", middleware.JWTAuthMiddleware(), v1.DeleteFriend)
+		apiv1.PUT("/friend/:id", middleware.JWTAuthMiddleware(), v1.UpdateFriendInfo)
+		apiv1.GET("/friend/:id", middleware.JWTAuthMiddleware(), v1.GetFriendInfo)
 
 		apiv1.POST("/message", v1.SendMessage)
 		apiv1.DELETE("/message/:id", v1.DeleteMessage)

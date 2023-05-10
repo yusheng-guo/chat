@@ -31,8 +31,8 @@ type User struct {
 	Email          string            `json:"email,omitempty" gorethink:"email,index"`
 	Password       string            `json:"password,omitempty" gorethink:"password"`
 	Gender         Gender            `json:"gender,omitempty" gorethink:"gender,omitempty"`
-	Friends        map[string]string `json:"friends,omitempty" gorethink:"friends,omitempty"` // 好友列表 备注->UserID
-	Groups         map[string]string `json:"groups,omitempty" gorethink:"groups,omitempty"`   // 所属群组ID 备注->GROUPID
+	Friends        map[string]string `json:"friends,omitempty" gorethink:"friends,omitempty"` // 好友列表  UserID->好友备注
+	Groups         map[string]string `json:"groups,omitempty" gorethink:"groups,omitempty"`   // 所属群组ID GROUPID->群备注
 	ProfileImage   string            `json:"profile_image,omitempty" gorethink:"profile_image,omitempty"`
 	Role           UserRole          `json:"role,omitempty" gorethink:"role,omitempty"`
 	Address        string            `json:"address,omitempty" gorethink:"address,omitempty"`

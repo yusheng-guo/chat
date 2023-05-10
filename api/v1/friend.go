@@ -1,7 +1,12 @@
 package v1
 
 import (
+	"log"
+	"net/http"
+
 	"github.com/gin-gonic/gin"
+	"github.com/yushengguo557/chat/api/common"
+	"github.com/yushengguo557/chat/internal/service"
 )
 
 // @Summary 添加好友
@@ -16,7 +21,22 @@ import (
 // @Failure 401 {object} ErrorResponse
 // @Failure 404 {object} ErrorResponse
 // @Router /v1/friend/:id [post]
-func AddFriend(c *gin.Context) {}
+func AddFriend(c *gin.Context) {
+	myid, exists := c.Get("id")
+	if exists {
+		log.Panic("id not exists")
+	}
+	friendid := c.PostForm("id")
+	svc := service.NewService(c)
+	err := svc.AddFriendByID(myid.(string), friendid)
+	if err != nil {
+		rsp := common.NewResponse(common.InternalServerError, err.Error())
+		c.JSON(http.StatusInternalServerError, rsp)
+		return
+	}
+	rsp := common.NewResponse(common.OK, "success")
+	c.JSON(http.StatusOK, rsp)
+}
 
 // @Summary 移除好友
 // @Description 当前用户移除好友
