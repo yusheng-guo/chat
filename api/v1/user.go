@@ -6,7 +6,6 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/yushengguo557/chat/api/common"
-	"github.com/yushengguo557/chat/internal/model"
 	"github.com/yushengguo557/chat/internal/service"
 	"github.com/yushengguo557/chat/utils"
 )
@@ -144,8 +143,8 @@ func UpdateMyInfo(c *gin.Context) {
 	}
 
 	// 从put请求中获取备注
-	var u model.User
-	err := c.BindJSON(&u)
+	var data map[string]any
+	err := c.BindJSON(&data)
 	if err != nil {
 		rsp := common.NewResponse(common.InternalServerError, err.Error())
 		c.JSON(http.StatusInternalServerError, rsp)
@@ -154,7 +153,7 @@ func UpdateMyInfo(c *gin.Context) {
 
 	// 修改信息
 	svc := service.NewService(c)
-	err = svc.ModifyMyInfoByID(myid.(string), &u)
+	err = svc.ModifyMyInfoByID(myid.(string), &data)
 	if err != nil {
 		rsp := common.NewResponse(common.InternalServerError, err.Error())
 		c.JSON(http.StatusInternalServerError, rsp)
@@ -164,5 +163,4 @@ func UpdateMyInfo(c *gin.Context) {
 	// 响应 数据
 	rsp := common.NewResponse(common.OK, "success")
 	c.JSON(http.StatusOK, rsp)
-
 }

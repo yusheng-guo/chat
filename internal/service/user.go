@@ -108,14 +108,18 @@ func (s *Service) GetMyInfoByID(myid string) (*model.User, error) {
 }
 
 // ModifyMyInfoByID 通过 id 修改我的信息
-func (s *Service) ModifyMyInfoByID(myid string, u *model.User) error {
-	err := s.dao.DeleteUserByID(myid)
+func (s *Service) ModifyMyInfoByID(myid string, data *map[string]any) error {
+	// err := s.dao.DeleteUserByID(myid)
+	// if err != nil {
+	// 	return fmt.Errorf("delete user by id when modifying my info: %w", err)
+	// }
+	// err = s.dao.InsertUser(u)
+	// if err != nil {
+	// 	return fmt.Errorf("insert user when modifying my info: %w", err)
+	// }
+	err := s.dao.UpdateUserByID(myid, data)
 	if err != nil {
-		return fmt.Errorf("delete user by id when modifying my info: %w", err)
-	}
-	err = s.dao.InsertUser(u)
-	if err != nil {
-		return fmt.Errorf("insert user when modifying my info: %w", err)
+		return fmt.Errorf("update user by id when updating my info: %w", err)
 	}
 	return nil
 }

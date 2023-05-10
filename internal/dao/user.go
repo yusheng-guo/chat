@@ -25,7 +25,7 @@ func (d *Dao) InsertUser(user *model.User) error {
 // DeleteUserByID 通过 ID 删除用户 (底层：将用户 字段 is_del 标记为 true)
 func (d *Dao) DeleteUserByID(uid string) error {
 	return d.UpdateUserByID(uid,
-		map[string]any{"id_del": true})
+		&map[string]any{"id_del": true})
 }
 
 // RealDeleteUserByID 通过 ID 删除用户 (底层：将用户从rethinkdb中永久删除)
@@ -42,7 +42,8 @@ func (d *Dao) RealDeleteUserByID(uid string) error {
 
 // ------------------------------------- 更新 -------------------------------------
 // UpdateUserByID 通过 ID 更新用户
-func (d *Dao) UpdateUserByID(uid string, data map[string]any) error {
+func (d *Dao) UpdateUserByID(uid string, dataptr *map[string]any) error {
+	data := *dataptr                // 解引用
 	data["updated_at"] = time.Now() // 更新时间
 	_, err := r.DB("chat").Table("users").
 		Filter(r.Row.Field("id").Eq(uid)).

@@ -22,11 +22,11 @@ func (s *Service) AddFriendByID(myid, friendid string) error {
 	// 更新 rethinkdb 数据库
 	me.Friends[friendid] = friend.Name
 	friend.Friends[myid] = me.Name
-	err = s.dao.UpdateUserByID(myid, map[string]any{"friends": me.Friends})
+	err = s.dao.UpdateUserByID(myid, &map[string]any{"friends": me.Friends})
 	if err != nil {
 		return fmt.Errorf("update user by id in `AddFriendByID` Function")
 	}
-	err = s.dao.UpdateUserByID(friendid, map[string]any{"friends": friend.Friends})
+	err = s.dao.UpdateUserByID(friendid, &map[string]any{"friends": friend.Friends})
 	if err != nil {
 		return fmt.Errorf("update user by id in `AddFriendByID` Function")
 	}
@@ -47,11 +47,11 @@ func (s *Service) DeleteFriendByID(myid, friendid string) error {
 	// 更新 rethinkdb 数据库
 	delete(me.Friends, friendid)
 	delete(friend.Friends, myid)
-	err = s.dao.UpdateUserByID(myid, map[string]any{"friends": me.Friends})
+	err = s.dao.UpdateUserByID(myid, &map[string]any{"friends": me.Friends})
 	if err != nil {
 		return fmt.Errorf("update user by id in `AddFriendByID` Function")
 	}
-	err = s.dao.UpdateUserByID(friendid, map[string]any{"friends": friend.Friends})
+	err = s.dao.UpdateUserByID(friendid, &map[string]any{"friends": friend.Friends})
 	if err != nil {
 		return fmt.Errorf("update user by id in `AddFriendByID` Function")
 	}
