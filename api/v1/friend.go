@@ -132,7 +132,7 @@ func GetFriendInfo(c *gin.Context) {
 		log.Panic("id not exists")
 	}
 
-	// 获取我的所有好友
+	// 通过 id 获取朋友的信息
 	friendid := c.Param("id")
 	svc := service.NewService(c)
 	friend, err := svc.GetFriendInfoByID(myid.(string), friendid)

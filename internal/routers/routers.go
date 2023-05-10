@@ -30,8 +30,8 @@ func NewRouter() *gin.Engine {
 		apiv1.POST("/login", v1.Login)
 		apiv1.POST("/admin", v1.Admin)
 		apiv1.POST("/logout", v1.Logout)
-		apiv1.PUT("/me", v1.UpdateMyInfo)
-		apiv1.GET("/me", v1.GetMyInfo)
+		apiv1.PUT("/me", middleware.JWTAuthMiddleware(), v1.UpdateMyInfo)
+		apiv1.GET("/me", middleware.JWTAuthMiddleware(), v1.GetMyInfo)
 
 		apiv1.GET("/friends", middleware.JWTAuthMiddleware(), v1.GetMyFriends)
 		apiv1.POST("/friend", middleware.JWTAuthMiddleware(), v1.AddFriend)
@@ -39,10 +39,10 @@ func NewRouter() *gin.Engine {
 		apiv1.PUT("/friend/:id", middleware.JWTAuthMiddleware(), v1.UpdateFriendNote)
 		apiv1.GET("/friend/:id", middleware.JWTAuthMiddleware(), v1.GetFriendInfo)
 
-		apiv1.POST("/message", v1.SendMessage)
-		apiv1.DELETE("/message/:id", v1.DeleteMessage)
-		apiv1.PUT("/message/:id", v1.UpdateMessage)
-		apiv1.GET("/message", v1.ReceiveMessage)
+		// apiv1.POST("/message", v1.SendMessage)
+		// apiv1.DELETE("/message/:id", v1.DeleteMessage)
+		// apiv1.PUT("/message/:id", v1.UpdateMessage)
+		// apiv1.GET("/message", v1.ReceiveMessage)
 
 		apiv1.GET("/ws", middleware.JWTAuthMiddleware(), v1.HandleWebSocket)
 

@@ -1,15 +1,18 @@
 package v1
 
 import (
+	"log"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
+	"github.com/yushengguo557/chat/api/common"
+	"github.com/yushengguo557/chat/internal/model"
 	"github.com/yushengguo557/chat/internal/service"
 	"github.com/yushengguo557/chat/utils"
 )
 
 // @Summary 用户注册
-// @Description 使用电子邮件进行注册
+// @Description User Registration
 // @Tags user
 // @Accept json
 // @Produce json
@@ -30,7 +33,7 @@ func Register(c *gin.Context) {
 }
 
 // @Summary 用户登录
-// @Description 使用电子邮件和明码进行登录
+// @Description User Login
 // @Tags user
 // @Accept json
 // @Produce json
@@ -64,7 +67,7 @@ func Login(c *gin.Context) {
 }
 
 // @Summary 用户登出
-// @Description Log out
+// @Description Log Out
 // @Tags user
 // @Accept json
 // @Produce json
@@ -77,7 +80,7 @@ func Login(c *gin.Context) {
 func Logout(c *gin.Context) {}
 
 // @Summary 管理员登录
-// @Description 管理员登录
+// @Description Administrator Login
 // @Tags user
 // @Accept json
 // @Produce json
@@ -90,7 +93,7 @@ func Logout(c *gin.Context) {}
 func Admin(c *gin.Context) {}
 
 // @Summary 获取我的个人信息
-// @Description 获取我的个人信息
+// @Description Get my personal information.
 // @Tags me
 // @Accept json
 // @Produce json
@@ -100,10 +103,30 @@ func Admin(c *gin.Context) {}
 // @Failure 401 {object} ErrorResponse
 // @Failure 404 {object} ErrorResponse
 // @Router /v1/me/info [get]
-func GetMyInfo(c *gin.Context) {}
+func GetMyInfo(c *gin.Context) {
+	// 从 context 中获取自身 id
+	myid, exists := c.Get("id")
+	if exists {
+		log.Panic("id not exists")
+	}
+
+	// 获取我的信息
+	svc := service.NewService(c)
+	me, err := svc.GetMyInfoByID(myid.(string))
+	if err != nil {
+		rsp := common.NewResponse(common.InternalServerError, err.Error())
+		c.JSON(http.StatusInternalServerError, rsp)
+		return
+	}
+
+	// 响应 数据
+	rsp := common.NewResponse(common.OK, "success")
+	rsp.Data = me
+	c.JSON(http.StatusOK, rsp)
+}
 
 // @Summary 更新我的个人信息
-// @Description 更新我的个人信息
+// @Description Update my personal information.
 // @Tags me
 // @Accept json
 // @Produce json
@@ -113,4 +136,33 @@ func GetMyInfo(c *gin.Context) {}
 // @Failure 401 {object} ErrorResponse
 // @Failure 404 {object} ErrorResponse
 // @Router /v1/me/info [put]
-func UpdateMyInfo(c *gin.Context) {}
+func UpdateMyInfo(c *gin.Context) {
+	// 从 context 中获取自身 id
+	myid, exists := c.Get("id")
+	if exists {
+		log.Panic("id not exists")
+	}
+
+	// 从put请求中获取备注
+	var u model.User
+	err := c.BindJSON(&u)
+	if err != nil {
+		rsp := common.NewResponse(common.InternalServerError, err.Error())
+		c.JSON(http.StatusInternalServerError, rsp)
+		return
+	}
+
+	// 修改信息
+	svc := service.NewService(c)
+	err = svc.ModifyMyInfoByID(myid.(string), &u)
+	if err != nil {
+		rsp := common.NewResponse(common.InternalServerError, err.Error())
+		c.JSON(http.StatusInternalServerError, rsp)
+		return
+	}
+
+	// 响应 数据
+	rsp := common.NewResponse(common.OK, "success")
+	c.JSON(http.StatusOK, rsp)
+
+}

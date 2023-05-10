@@ -97,3 +97,25 @@ func (s Service) Login(re *LoginRequest) (*model.User, error) {
 	// 4.返回用户结构体
 	return u, nil
 }
+
+// GetMyInfoByID 通过 id 获取我的信息
+func (s *Service) GetMyInfoByID(myid string) (*model.User, error) {
+	u, err := s.dao.FindUserByID(myid)
+	if err != nil {
+		return nil, fmt.Errorf("find user by id when getting my info: %w", err)
+	}
+	return u, err
+}
+
+// ModifyMyInfoByID 通过 id 修改我的信息
+func (s *Service) ModifyMyInfoByID(myid string, u *model.User) error {
+	err := s.dao.DeleteUserByID(myid)
+	if err != nil {
+		return fmt.Errorf("delete user by id when modifying my info: %w", err)
+	}
+	err = s.dao.InsertUser(u)
+	if err != nil {
+		return fmt.Errorf("insert user when modifying my info: %w", err)
+	}
+	return nil
+}
