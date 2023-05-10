@@ -13,6 +13,7 @@ const (
 type Response struct {
 	Code ResponseCode // 响应码
 	Msg  string       // 消息
+	Data any          // 载荷
 }
 
 // NewResponse
