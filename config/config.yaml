@@ -21,3 +21,9 @@ Storage:
     - .jpeg
     - .png
     - .gif
+
+SMTPHost:
+	Host: "smtp.example.com"
+	Port: 587
+  Username: "declinedyew@outlook.com"
+	Password: "3x+4y=25"

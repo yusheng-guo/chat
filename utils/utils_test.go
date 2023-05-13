@@ -15,10 +15,23 @@ func TestGenRandFourDigits(t *testing.T) {
 
 // TestSendEmail 测试邮件发送功能
 func TestSendEmail(t *testing.T) {
-	e := NewEmailService()
-	// err := e.Send("declinedyew@outlook.com", "验证码", GenRandFourDigits()())
-	err := e.SendCaptcha("declinedyew@outlook.com", e.GenCaptcha())
+	// 新建 Email服务
+	e, err := NewEmailService()
 	if err != nil {
+		fmt.Println("new...")
+		panic(err)
+	}
+
+	// 关闭 客户端
+	defer func() {
+		_ = e.Client.Close()
+	}()
+
+	// err := e.Send("declinedyew@outlook.com", "验证码", GenRandFourDigits()())
+	// 发送 验证码
+	err = e.SendCaptcha("declinedyew@outlook.com")
+	if err != nil {
+		fmt.Println("send...")
 		panic(err)
 	}
 }
