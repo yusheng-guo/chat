@@ -58,3 +58,30 @@
 {"level":"info","msg":"[GIN] 2023/05/18 - 23:50:08 | 200 |            0s |       127.0.0.1 | GET      \"/code\"","time":"2023-05-18T23:50:08+08:00"}
 {"level":"info","msg":"Database and tables created!","time":"2023-05-18T23:50:36+08:00"}
 {"level":"info","msg":"Configuration file is loaded!","time":"2023-05-18T23:50:36+08:00"}
+{"level":"info","msg":"Database and tables created!","time":"2023-05-18T23:54:26+08:00"}
+{"level":"info","msg":"Configuration file is loaded!","time":"2023-05-18T23:54:26+08:00"}
+{"level":"info","msg":"Database and tables created!","time":"2023-05-18T23:56:48+08:00"}
+{"level":"info","msg":"Configuration file is loaded!","time":"2023-05-18T23:56:48+08:00"}
+{"level":"info","msg":"Database and tables created!","time":"2023-05-19T00:23:49+08:00"}
+{"level":"info","msg":"Configuration file is loaded!","time":"2023-05-19T00:23:49+08:00"}
+{"level":"info","msg":"Database and tables created!","time":"2023-05-19T00:25:59+08:00"}
+{"level":"info","msg":"Configuration file is loaded!","time":"2023-05-19T00:25:59+08:00"}
+{"level":"info","msg":"[GIN] 2023/05/19 - 00:27:29 | 404 |            0s |       127.0.0.1 | POST     \"/code\"","time":"2023-05-19T00:27:29+08:00"}
+{"level":"info","msg":"Database and tables created!","time":"2023-05-19T00:28:06+08:00"}
+{"level":"info","msg":"Configuration file is loaded!","time":"2023-05-19T00:28:06+08:00"}
+{"level":"info","msg":"[GIN] 2023/05/19 - 00:28:37 | 404 |            0s |       127.0.0.1 | POST     \"/code\"","time":"2023-05-19T00:28:37+08:00"}
+{"level":"info","msg":"Database and tables created!","time":"2023-05-19T00:30:39+08:00"}
+{"level":"info","msg":"Configuration file is loaded!","time":"2023-05-19T00:30:39+08:00"}
+{"level":"info","msg":"Database and tables created!","time":"2023-05-19T00:32:06+08:00"}
+{"level":"info","msg":"Configuration file is loaded!","time":"2023-05-19T00:32:06+08:00"}
+{"level":"info","msg":"Database and tables created!","time":"2023-05-19T00:32:06+08:00"}
+{"level":"info","msg":"Configuration file is loaded!","time":"2023-05-19T00:32:06+08:00"}
+{"level":"warning","msg":"listen tcp :8080: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted.","time":"2023-05-19T00:32:06+08:00"}
+{"level":"info","msg":"Database and tables created!","time":"2023-05-19T00:33:08+08:00"}
+{"level":"info","msg":"Configuration file is loaded!","time":"2023-05-19T00:33:08+08:00"}
+{"level":"info","msg":"Database and tables created!","time":"2023-05-19T00:33:08+08:00"}
+{"level":"info","msg":"Configuration file is loaded!","time":"2023-05-19T00:33:08+08:00"}
+{"level":"warning","msg":"listen tcp :8080: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted.","time":"2023-05-19T00:33:08+08:00"}
+{"level":"info","msg":"[GIN] 2023/05/19 - 00:34:05 | 200 |   16.5712072s |       127.0.0.1 | GET      \"/code\"","time":"2023-05-19T00:34:05+08:00"}
+{"level":"info","msg":"[GIN] 2023/05/19 - 00:34:59 | 200 |   15.4563147s |       127.0.0.1 | GET      \"/code\"","time":"2023-05-19T00:34:59+08:00"}
+{"level":"info","msg":"[GIN] 2023/05/19 - 00:36:01 | 200 |   15.9441973s |       127.0.0.1 | GET      \"/code\"","time":"2023-05-19T00:36:01+08:00"}

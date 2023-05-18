@@ -11,22 +11,24 @@ import (
 // 获取邮箱验证码 测试
 func GetCode(c *gin.Context) {
 	// 新建 Email服务
-	fmt.Println("creat new email service")
 	e, err := utils.NewEmailService()
 	if err != nil {
-		panic(err)
+		fmt.Println("new... ", err)
+		panic(fmt.Errorf("new...%w", err))
 	}
 
 	// 关闭 客户端
-	// defer func() {
-	// 	_ = e.Client.Close()
-	// }()
+	defer func() {
+		fmt.Println("close...")
+		_ = e.Client.Close()
+	}()
 
+	// err := e.Send("declinedyew@outlook.com", "验证码", GenRandFourDigits()())
 	// 发送 验证码
-	fmt.Println("send email captcha")
 	err = e.SendCaptcha("declinedyew@outlook.com")
 	if err != nil {
-		panic(err)
+		fmt.Println("send... ", err)
+		panic(fmt.Errorf("send... %w", err))
 	}
-	c.JSON(http.StatusOK, gin.H{"meg": "OK"})
+	c.JSON(http.StatusOK, gin.H{"msg": "ok"})
 }

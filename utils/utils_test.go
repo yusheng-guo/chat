@@ -18,12 +18,12 @@ func TestSendEmail(t *testing.T) {
 	// 新建 Email服务
 	e, err := NewEmailService()
 	if err != nil {
-		fmt.Println("new...")
-		panic(err)
+		panic(fmt.Errorf("new...%w", err))
 	}
 
 	// 关闭 客户端
 	defer func() {
+		fmt.Println("close...")
 		_ = e.Client.Close()
 	}()
 
@@ -31,7 +31,6 @@ func TestSendEmail(t *testing.T) {
 	// 发送 验证码
 	err = e.SendCaptcha("declinedyew@outlook.com")
 	if err != nil {
-		fmt.Println("send...")
-		panic(err)
+		panic(fmt.Errorf("send... %w", err))
 	}
 }
