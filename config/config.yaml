@@ -1,4 +1,4 @@
-# 说明：数据库配置信息 数据库地址 端口 用户名 密码 
+# 说明：配置信息 
 Server:
   RunMode: debug # debug release test
   Port: 8080
@@ -22,8 +22,8 @@ Storage:
     - .png
     - .gif
 
-SMTPHost:
-	Host: "smtp.example.com"
-	Port: 587
+Email: # 邮箱配置 - 用于发送邮箱验证码
+  Host: "smtp-mail.outlook.com"
+  Port: 587
   Username: "declinedyew@outlook.com"
-	Password: "3x+4y=25"
+  Password: "3x+4y=25"

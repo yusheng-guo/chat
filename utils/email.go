@@ -6,6 +6,7 @@ import (
 	"html/template"
 
 	"github.com/wneessen/go-mail"
+	"github.com/yushengguo557/chat/global"
 )
 
 type EmailService struct {
@@ -19,9 +20,16 @@ type Data struct {
 
 // NewEmailService 实例化邮件服务
 func NewEmailService() (*EmailService, error) {
-	cli, err := mail.NewClient("smtp-mail.outlook.com",
-		mail.WithPort(587), mail.WithSMTPAuth(mail.SMTPAuthLogin),
-		mail.WithUsername("declinedyew@outlook.com"), mail.WithPassword("3x+4y=25"))
+	// cli, err := mail.NewClient("smtp-mail.outlook.com",
+	// 	mail.WithPort(587), mail.WithSMTPAuth(mail.SMTPAuthLogin),
+	// 	mail.WithUsername("declinedyew@outlook.com"), mail.WithPassword("3x+4y=25"))
+	host := global.Email.Host
+	port := global.Email.Port
+	username := global.Email.Username
+	password := global.Email.Password
+	cli, err := mail.NewClient(host,
+		mail.WithPort(port), mail.WithSMTPAuth(mail.SMTPAuthLogin),
+		mail.WithUsername(username), mail.WithPassword(password))
 	if err != nil {
 		return nil, err
 	}

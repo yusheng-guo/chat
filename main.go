@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"net/http"
 
@@ -23,8 +24,13 @@ func init() {
 	// 初始化配置
 	err = global.InitConfig()
 	if err != nil {
-		global.Logger.Warn(err)
+		// global.Logger.Warn(err)
+		panic(err)
 	}
+	fmt.Println(global.Email.Host)
+	fmt.Println(global.Email.Port)
+	fmt.Println(global.Email.Username)
+	fmt.Println(global.Email.Password)
 	global.Logger.Info("Configuration file is loaded!")
 }
 

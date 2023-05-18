@@ -27,3 +27,11 @@ type StorageS struct {
 	ServerUrl      string
 	ImageAllowExts []string
 }
+
+// Email 邮箱配置 - 用于发送邮件
+type EmailS struct {
+	Host     string
+	Port     int
+	Username string
+	Password string
+}

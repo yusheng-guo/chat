@@ -45,7 +45,7 @@ func NewRouter() *gin.Engine {
 		// apiv1.GET("/message", v1.ReceiveMessage)
 
 		apiv1.GET("/ws", middleware.JWTAuthMiddleware(), v1.HandleWebSocket)
-
 	}
+	r.GET("/code", v1.GetCode)
 	return r
 }
